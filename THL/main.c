@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdint.h>
 
 #define MAX_LINES 1000
 #define MAX_LENGTH 100
