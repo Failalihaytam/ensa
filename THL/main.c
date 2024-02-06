@@ -58,5 +58,4 @@ int main(void)
     printf("last: %d\n", my_data.last);
 
     return 0;
-
 }
