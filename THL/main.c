@@ -34,7 +34,7 @@ int main(void)
     {
         if (sscanf(line, "%d %d %s", &my_data.transactions[transactions_index].depart,
             &my_data.transactions[transactions_index].arrive,
-            my_data.transactions[transactions_index].etiquete) == 3)
+            &my_data.transactions[transactions_index].etiquete) == 3)
         {
             transactions_index++;
         }
