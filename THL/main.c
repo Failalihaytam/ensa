@@ -32,7 +32,7 @@ int main(void)
 
     while(fgets(line, sizeof(line), file) !=0)
     {
-        if (sscanf(line, "%d %d %s", &my_data.transactions[transactions_index].depart,
+        if (sscanf(line, "%d %d %c", &my_data.transactions[transactions_index].depart,
             &my_data.transactions[transactions_index].arrive,
             &my_data.transactions[transactions_index].etiquete) == 3)
         {
@@ -52,7 +52,7 @@ int main(void)
     printf("Transactions:\n");
     for (int i = 0; i < transactions_index; ++i)
     {
-        printf("%d %d %s\n", my_data.transactions[i].depart, my_data.transactions[i].arrive, my_data.transactions[i].etiquete);
+        printf("%d %d %c\n", my_data.transactions[i].depart, my_data.transactions[i].arrive, my_data.transactions[i].etiquete);
     }
     printf("first: %d\n", my_data.first);
     printf("last: %d\n", my_data.last);
