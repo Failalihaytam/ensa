@@ -7,7 +7,7 @@ typedef struct
 {
     int depart;
     int arrive;
-    char etiquete[MAX_LENGTH];
+    char etiquete;
 }Transaction;
 
 typedef struct
