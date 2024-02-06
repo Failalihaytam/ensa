@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdint.h>
 
 #define MAX_LINES 1000
 #define MAX_LENGTH 100
@@ -16,7 +17,7 @@ typedef struct
     int first;
     int last;
 }Data;
- 
+
 int main(void)
 {
     Data my_data;
