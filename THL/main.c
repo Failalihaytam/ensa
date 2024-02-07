@@ -28,7 +28,6 @@ int main(void)
     {
         return 1;
     }
-
     Data my_data = stocker(my_file);
 
     // Print the struct
