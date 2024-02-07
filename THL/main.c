@@ -21,7 +21,7 @@ int main(void)
 {
     Data my_data;
 
-    FILE *file = fopen("projet.txt", "r");
+    FILE *my_file = fopen("projet.txt", "r");
     if (file == NULL)
     {
         return 1;
@@ -30,7 +30,7 @@ int main(void)
     int transactions_index = 0;
     char line[MAX_LENGTH];
 
-    while(fgets(line, sizeof(line), file) !=0)
+    while(fgets(line, sizeof(line), my_file) !=0)
     {
         if (sscanf(line, "%d %d %c", &my_data.transactions[transactions_index].depart,
             &my_data.transactions[transactions_index].arrive,
@@ -41,12 +41,12 @@ int main(void)
         else
         {
             sscanf(line, "%d", &my_data.first);
-            fgets(line, sizeof(line), file);
+            fgets(line, sizeof(line), my_file);
             sscanf(line, "%d", &my_data.last);
             break;
         }
     }
-    fclose(file);
+    fclose(my_file);
 
     // Print the struct
     printf("Transactions:\n");
@@ -59,3 +59,5 @@ int main(void)
 
     return 0;
 }
+
+Data stock(FILE file)
