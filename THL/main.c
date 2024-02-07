@@ -17,7 +17,7 @@ typedef struct
     int last;
 }Data;
 
-Data stocker(FILE file);
+Data stocker(FILE *file);
 
 int transactions_index = 0;
 
@@ -44,7 +44,7 @@ int main(void)
     return 0;
 }
 
-Data stocker(FILE file)
+Data stocker(FILE *file)
 {
     Data data;
 
