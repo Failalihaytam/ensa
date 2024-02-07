@@ -17,36 +17,20 @@ typedef struct
     int last;
 }Data;
 
+Data stocker(FILE file);
+
+int transactions_index = 0;
+
 int main(void)
 {
-    Data my_data;
 
     FILE *my_file = fopen("projet.txt", "r");
-    if (file == NULL)
+    if (my_file == NULL)
     {
         return 1;
     }
 
-    int transactions_index = 0;
-    char line[MAX_LENGTH];
-
-    while(fgets(line, sizeof(line), my_file) !=0)
-    {
-        if (sscanf(line, "%d %d %c", &my_data.transactions[transactions_index].depart,
-            &my_data.transactions[transactions_index].arrive,
-            &my_data.transactions[transactions_index].etiquete) == 3)
-        {
-            transactions_index++;
-        }
-        else
-        {
-            sscanf(line, "%d", &my_data.first);
-            fgets(line, sizeof(line), my_file);
-            sscanf(line, "%d", &my_data.last);
-            break;
-        }
-    }
-    fclose(my_file);
+    Data my_data = stocker(my_file);
 
     // Print the struct
     printf("Transactions:\n");
@@ -60,4 +44,29 @@ int main(void)
     return 0;
 }
 
-Data stock(FILE file)
+Data stocker(FILE file)
+{
+    Data data;
+
+    char line[MAX_LENGTH];
+
+    while(fgets(line, sizeof(line), file) !=0)
+    {
+        if (sscanf(line, "%d %d %c", &data.transactions[transactions_index].depart,
+            &data.transactions[transactions_index].arrive,
+            &data.transactions[transactions_index].etiquete) == 3)
+        {
+            transactions_index++;
+        }
+        else
+        {
+            sscanf(line, "%d", &data.first);
+            fgets(line, sizeof(line), file);
+            sscanf(line, "%d", &data.last);
+            break;
+        }
+    }
+    fclose(file);
+
+    return data;
+}
