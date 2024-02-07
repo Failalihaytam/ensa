@@ -17,7 +17,9 @@ typedef struct
     int last;
 }Data;
 
+//declarer les prototypes des fonctions
 Data stocker(FILE *file);
+void afficher(Data data);
 
 int transactions_index = 0;
 
@@ -30,14 +32,8 @@ int main(void)
     }
     Data my_data = stocker(my_file);
 
-    // Print the struct
-    printf("Transactions:\n");
-    for (int i = 0; i < transactions_index; ++i)
-    {
-        printf("%d %d %c\n", my_data.transactions[i].depart, my_data.transactions[i].arrive, my_data.transactions[i].etiquete);
-    }
-    printf("first: %d\n", my_data.first);
-    printf("last: %d\n", my_data.last);
+    // afficher le contenu de my_data
+    afficher(my_data);
 
     return 0;
 }
@@ -69,7 +65,14 @@ Data stocker(FILE *file)
     return data;
 }
 
-void afficher()
+void afficher(Data data)
 {
-    
+    printf("Transactions:\n");
+    for (int i = 0; i < transactions_index; ++i)
+    {
+        printf("%d %d %c\n", data.transactions[i].depart, data.transactions[i].arrive, data.transactions[i].etiquete);
+    }
+    printf("first: %d\n", data.first);
+    printf("last: %d\n", data.last);
+    return;
 }
