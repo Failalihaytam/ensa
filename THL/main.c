@@ -68,3 +68,8 @@ Data stocker(FILE *file)
 
     return data;
 }
+
+void afficher()
+{
+    
+}
