@@ -23,7 +23,6 @@ int transactions_index = 0;
 
 int main(void)
 {
-
     FILE *my_file = fopen("projet.txt", "r");
     if (my_file == NULL)
     {
