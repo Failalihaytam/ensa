@@ -8,16 +8,16 @@ typedef struct
     int depart;
     int arrive;
     char etiquete;
-}Transaction;
+} Transaction;
 
 typedef struct
 {
     Transaction transactions[MAX_LINES];
     int first;
     int last;
-}Data;
+} Data;
 
-//declarer les prototypes des fonctions
+// declarer les prototypes des fonctions
 Data stocker(FILE *file);
 void afficher(Data data);
 
@@ -44,11 +44,11 @@ Data stocker(FILE *file)
 
     char line[MAX_LENGTH];
 
-    while(fgets(line, sizeof(line), file) !=0)
+    while (fgets(line, sizeof(line), file) != 0)
     {
         if (sscanf(line, "%d %d %c", &data.transactions[transactions_index].depart,
-            &data.transactions[transactions_index].arrive,
-            &data.transactions[transactions_index].etiquete) == 3)
+                &data.transactions[transactions_index].arrive,
+                &data.transactions[transactions_index].etiquete) == 3)
         {
             transactions_index++;
         }
