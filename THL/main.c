@@ -34,7 +34,7 @@ int main(void)
     }
     Data my_data = stocker(my_file);
 
-    // afficher le contenu de my_data
+    // afficher le menu des operations
     menu(my_data);
 
     return 0;
