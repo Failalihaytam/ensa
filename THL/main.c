@@ -77,4 +77,11 @@ void afficher(Data data)
     return;
 }
 
-void menu
+void menu(void)
+{
+    int answer;
+    do
+    {
+
+    }while (answer != 0)
+}
