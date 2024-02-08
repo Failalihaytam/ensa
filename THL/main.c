@@ -68,7 +68,7 @@ Data stocker(FILE *file)
 
 void alphabet(Data data)
 {
-    printf("Transactions:\n");
+    printf("Alphabets:\n");
     for (int i = 0; i < transactions_index; ++i)
     {
         printf("%c\n", data.transactions[i].etiquete);
@@ -105,7 +105,7 @@ void menu(Data data)
         {
             printf("L'etat final: %d\n", data.last);
         }
-        else
+        else if (answer == 4)
         {
             alphabet(data);
         }
