@@ -82,6 +82,13 @@ void menu(void)
     int answer;
     do
     {
+        do
+        {
+            printf("entrer un nombre pour choisir votre operation: \n");
+            printf("1- afficher la liste des transaction\n2- afficher");
 
-    }while (answer != 0)
+        }
+        while (answer < 0 || answer > 4);
+    }
+    while (answer != 0);
 }
