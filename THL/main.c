@@ -85,10 +85,10 @@ void menu(void)
         do
         {
             printf("entrer un nombre pour choisir votre operation: \n");
-            printf("1- afficher la liste des transaction\n2- afficher l'etat initial\n3- afficher l'etat final");
+            printf("1- afficher la liste des transaction\n2- afficher l'etat initial\n3- afficher l'etat final\n4- afficher la liste des alphabets");
 
         }
-        while (answer < 0 || answer > 4);
+        while (answer < 1 || answer > 4);
     }
     while (answer != 0);
 }
