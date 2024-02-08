@@ -76,3 +76,5 @@ void afficher(Data data)
     printf("last: %d\n", data.last);
     return;
 }
+
+void menu
