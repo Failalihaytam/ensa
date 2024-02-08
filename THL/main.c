@@ -19,7 +19,8 @@ typedef struct
 
 // declarer les prototypes des fonctions
 Data stocker(FILE *file);
-void afficher(Data data);
+void alphabet(Data data);
+void menu(Data data);
 
 int transactions_index = 0;
 
@@ -33,7 +34,7 @@ int main(void)
     Data my_data = stocker(my_file);
 
     // afficher le contenu de my_data
-    afficher(my_data);
+    menu(my_data);
 
     return 0;
 }
@@ -65,19 +66,17 @@ Data stocker(FILE *file)
     return data;
 }
 
-void afficher(Data data)
+void alphabet(Data data)
 {
     printf("Transactions:\n");
     for (int i = 0; i < transactions_index; ++i)
     {
-        printf("%d %d %c\n", data.transactions[i].depart, data.transactions[i].arrive, data.transactions[i].etiquete);
+        printf("%c\n", data.transactions[i].etiquete);
     }
-    printf("first: %d\n", data.first);
-    printf("last: %d\n", data.last);
     return;
 }
 
-void menu(void)
+void menu(Data data)
 {
     int answer;
     do
@@ -98,6 +97,19 @@ void menu(void)
                 printf("%d %d %c\n", data.transactions[i].depart, data.transactions[i].arrive, data.transactions[i].etiquete);
             }
         }
+        else if (answer == 2)
+        {
+            printf("L'etat initial: %d\n", data.first);
+        }
+        else if (answer == 3)
+        {
+            printf("L'etat final: %d\n", data.last);
+        }
+        else
+        {
+            alphabet(data);
+        }
     }
-    while (answer != 0);
+    while (answer != 5);
+    return;
 }
