@@ -109,6 +109,7 @@ void menu(Data data)
         {
             alphabet(data);
         }
+        printf("\n");
     }
     while (answer != 5);
     return;
