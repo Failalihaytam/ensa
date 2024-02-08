@@ -85,10 +85,19 @@ void menu(void)
         do
         {
             printf("entrer un nombre pour choisir votre operation: \n");
-            printf("1- afficher la liste des transaction\n2- afficher l'etat initial\n3- afficher l'etat final\n4- afficher la liste des alphabets");
-
+            printf("1- Afficher la liste des transaction\n2- Afficher l'etat initial\n3- Afficher l'etat final\n4- Afficher la liste des alphabets\n5- Quitter le programme\n");
+            scanf("%i", &answer);
         }
-        while (answer < 1 || answer > 4);
+        while (answer < 1 || answer > 5);
+
+        if (answer == 1)
+        {
+            printf("Transactions:\n");
+            for (int i = 0; i < transactions_index; ++i)
+            {
+                printf("%d %d %c\n", data.transactions[i].depart, data.transactions[i].arrive, data.transactions[i].etiquete);
+            }
+        }
     }
     while (answer != 0);
 }
