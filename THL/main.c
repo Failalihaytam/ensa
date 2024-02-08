@@ -85,7 +85,7 @@ void menu(void)
         do
         {
             printf("entrer un nombre pour choisir votre operation: \n");
-            printf("1- afficher la liste des transaction\n2- afficher");
+            printf("1- afficher la liste des transaction\n2- afficher l'etat initial\n3- afficher l'etat final");
 
         }
         while (answer < 0 || answer > 4);
