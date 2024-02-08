@@ -16,9 +16,6 @@ typedef struct
     Transaction transactions[MAX_LINES];
     int first;
     int last;
-<<<<<<< HEAD
-}Data;
-=======
 } Data;
 
 // declarer les prototypes des fonctions
@@ -27,7 +24,6 @@ void alphabet(Data data);
 void menu(Data data);
 
 int transactions_index = 0;
->>>>>>> change1
 
 int main(void)
 {
