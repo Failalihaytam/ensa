@@ -23,6 +23,7 @@ typedef struct
 Automate stocker(FILE *file); // Fonction pour stocker les données de transaction
 void alphabet(Automate automate); // Fonction pour afficher les alphabets
 void menu(Automate automate); // Fonction pour afficher le menu
+void generer_fichier_dot(Automate automate); // Fonction pour générer le fichier DOT et le fichier PNG associé
 
 int transactions_index = 0;
 
@@ -87,7 +88,7 @@ void menu(Automate automate)
         do
         {
             printf("Entrez un nombre pour choisir votre opération :\n");
-            printf("1- Afficher la liste des transactions\n2- Afficher l'état initial\n3- Afficher l'état final\n4- Afficher la liste des alphabets\n5- Quitter le programme\n");
+            printf("1- Afficher la liste des transactions\n2- Afficher l'état initial\n3- Afficher l'état final\n4- Afficher la liste des alphabets\n5- Générer le fichier PNG\n6- Quitter le programme\n");
 
             // Lit l'entrée de l'utilisateur sous forme de chaîne de caractères
             scanf("%s", input);
@@ -96,11 +97,11 @@ void menu(Automate automate)
             answer = atoi(input);
 
             // Vérifie si l'entrée est un entier valide
-            if (answer < 1 || answer > 5)
+            if (answer < 1 || answer > 6)
             {
-                printf("Entrée invalide. Veuillez entrer un nombre entre 1 et 5.\n");
+                printf("Entrée invalide. Veuillez entrer un nombre entre 1 et 6.\n");
             }
-        } while (answer < 1 || answer > 5);
+        } while (answer < 1 || answer > 6);
 
         if (answer == 1)
         {
@@ -122,10 +123,55 @@ void menu(Automate automate)
         {
             alphabet(automate); // Affiche les alphabets
         }
-        else
-            printf("Impossible");
+        else if (answer == 5)
+        {
+            generer_fichier_dot(automate); // Génère le fichier DOT et le fichier PNG associé
+        }
 
         printf("\n");
-    } while (answer != 5); // Continue tant que l'utilisateur ne choisit pas de quitter
+    } while (answer != 6); // Continue tant que l'utilisateur ne choisit pas de quitter
     return;
+}
+
+void generer_fichier_dot(Automate automate)
+{
+    FILE *fichier_dot = fopen("automate.dot", "w"); // Ouvre un fichier DOT en écriture
+    if (fichier_dot == NULL)
+    {
+        printf("Impossible d'ouvrir le fichier DOT.\n");
+        return;
+    }
+
+    // Début du fichier DOT
+    fprintf(fichier_dot, "digraph automate {\n");
+
+    // Écriture des transitions
+    for (int i = 0; i < transactions_index; ++i)
+    {
+        fprintf(fichier_dot, "  %d -> %d [label=\"%c\"];\n", automate.transactions[i].depart, automate.transactions[i].arrive, automate.transactions[i].etiquete);
+    }
+
+    // Coloration des états initiaux, finaux et autres états
+    fprintf(fichier_dot, "  node [style=filled];\n");
+    fprintf(fichier_dot, "  %d [fillcolor=green];\n", automate.first); // État initial en vert
+    fprintf(fichier_dot, "  %d [fillcolor=blue];\n", automate.last);   // État final en bleu
+    for (int i = 0; i < transactions_index; ++i)
+    {
+        if (automate.transactions[i].depart != automate.first && automate.transactions[i].depart != automate.last)
+        {
+            fprintf(fichier_dot, "  %d [fillcolor=black];\n", automate.transactions[i].depart); // Autres états en noir
+        }
+        if (automate.transactions[i].arrive != automate.first && automate.transactions[i].arrive != automate.last)
+        {
+            fprintf(fichier_dot, "  %d [fillcolor=black];\n", automate.transactions[i].arrive); // Autres états en noir
+        }
+    }
+
+    // Fin du fichier DOT
+    fprintf(fichier_dot, "}\n");
+
+    fclose(fichier_dot); // Ferme le fichier DOT
+
+    // Générer le fichier PNG à partir du fichier DOT
+    system("dot -Tpng automate.dot -o automate.png");
 }
