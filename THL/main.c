@@ -155,17 +155,7 @@ void generer_fichier_dot(Automate automate)
     fprintf(fichier_dot, "  node [style=filled, fillcolor=red];\n");
     fprintf(fichier_dot, "  %d [fillcolor=green];\n", automate.first); // État initial en vert
     fprintf(fichier_dot, "  %d [fillcolor=blue];\n", automate.last);   // État final en bleu
-    for (int i = 0; i < transactions_index; ++i)
-    {
-        if (automate.transactions[i].depart != automate.first && automate.transactions[i].depart != automate.last)
-        {
-            fprintf(fichier_dot, "  %d [fillcolor=black];\n", automate.transactions[i].depart); // Autres états en noir
-        }
-        if (automate.transactions[i].arrive != automate.first && automate.transactions[i].arrive != automate.last)
-        {
-            fprintf(fichier_dot, "  %d [fillcolor=black];\n", automate.transactions[i].arrive); // Autres états en noir
-        }
-    }
+    
 
     // Fin du fichier DOT
     fprintf(fichier_dot, "}\n");
