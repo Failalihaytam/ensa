@@ -152,7 +152,7 @@ void generer_fichier_dot(Automate automate)
     }
 
     // Coloration des états initiaux, finaux et autres états
-    fprintf(fichier_dot, "  node [style=filled];\n");
+    fprintf(fichier_dot, "  node [style=filled, fillcolor=red];\n");
     fprintf(fichier_dot, "  %d [fillcolor=green];\n", automate.first); // État initial en vert
     fprintf(fichier_dot, "  %d [fillcolor=blue];\n", automate.last);   // État final en bleu
     for (int i = 0; i < transactions_index; ++i)

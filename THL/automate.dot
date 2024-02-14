@@ -46,7 +46,7 @@ digraph automate {
   46 -> 47 [label="r"];
   47 -> 48 [label="q"];
   48 -> 49 [label="s"];
-  node [style=filled];
+  node [style=filled, fillcolor=red];
   0 [fillcolor=green];
   49 [fillcolor=blue];
   1 [fillcolor=black];
