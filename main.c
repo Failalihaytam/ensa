@@ -127,7 +127,7 @@ void afficherMenu(const Automate automate) {
 }
 
 int main() {
-    Automate automate = lireAutomateDepuisFichier("automate_test.txt");
+    Automate automate = lireAutomateDepuisFichier("file.txt");
     printf("Automate lu depuis le fichier.\n");
     afficherMenu(automate);
     return 0;
