@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <stdint.h>
 
 #define MAX_LINES 1000
 #define MAX_LENGTH 100
@@ -148,8 +147,8 @@ void generate_dot(Automate automate) {
     for (int i = 0; i < transactions_index; i++){
         fprintf(file_dot,  "%d -> %d [label=%c];\n", automate.transactions[i].depart, automate.transactions[i].arrive, automate.transactions[i].etiquete);
     }
-    fprintf(file_dot,"%d [color=green];\n",automate.first);
-    fprintf(file_dot,"%d [color=blue];\n",automate.last);
+    fprintf(file_dot,"%d [color=green];\n",automate.initial);
+    fprintf(file_dot,"%d [color=blue];\n",automate.final);
 
     for(int i=0; i < transactions_index; i++)
     {
@@ -162,7 +161,7 @@ void generate_dot(Automate automate) {
                 break;
             }
         }
-        if (trouve == false && automate.transactions[i].depart != automate.first)
+        if (trouve == false && automate.transactions[i].depart != automate.initial)
         {
             fprintf(file_dot,"%d [color=grey];\n",automate.transactions[i].depart);
         }
