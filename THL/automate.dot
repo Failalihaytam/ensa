@@ -1,5 +1,6 @@
 digraph automate{
 0 -> 1 [label=r];
+60 -> 2 [label=k];
 1 -> 2 [label=q];
 2 -> 3 [label=h];
 3 -> 4 [label=b];
@@ -11,4 +12,5 @@ digraph automate{
 9 -> 10 [label=g];
 0 [color=green];
 10 [color=blue];
+60 [color=grey];
 }
