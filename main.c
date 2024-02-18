@@ -36,6 +36,11 @@ void lireAutomate(Automate *automate, const char *nom_fichier) {
         exit(EXIT_FAILURE);
     }
 
+    // Initialize counts
+    automate->nb_transitions = 0;
+    automate->nb_etats_initiaux = 0;
+    automate->nb_etats_finaux = 0;
+
     while ((fscanf(fichier, "%d %d %c", &automate->transitions[automate->nb_transitions].etat_depart,
                                          &automate->transitions[automate->nb_transitions].etat_arrive,
                                          &automate->transitions[automate->nb_transitions].etiquette) == 3)
@@ -52,6 +57,7 @@ void lireAutomate(Automate *automate, const char *nom_fichier) {
 
     fclose(fichier);
 }
+
 
 void afficherAutomate(const Automate *automate) {
     printf("Transitions de l'automate :\n");
