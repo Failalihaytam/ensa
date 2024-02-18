@@ -105,7 +105,7 @@ void menu(Automate automate)
                 printf("Invalid input. Please enter a number between 1 and 5.\n");
             }
         }
-        while (answer < 1 || answer > 5);
+        while (answer < 1 || answer > 6);
 
         if (answer == 1)
         {
