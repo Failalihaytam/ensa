@@ -59,9 +59,21 @@ void afficherAutomate(const Automate *automate) {
         printf("%d -> %d : %c\n", automate->transitions[i].etat_depart,
                                    automate->transitions[i].etat_arrive,
                                    automate->transitions[i].etiquette);
-
     }
+
+    printf("\nEtats initiaux de l'automate :\n");
+    for (int i = 0; i < automate->nb_etats_initiaux; ++i) {
+        printf("%d ", automate->etats_initiaux[i]);
+    }
+    printf("\n");
+
+    printf("\nEtats finaux de l'automate :\n");
+    for (int i = 0; i < automate->nb_etats_finaux; ++i) {
+        printf("%d ", automate->etats_finaux[i]);
+    }
+    printf("\n");
 }
+
 
 int main() {
     Automate automate;
