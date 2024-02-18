@@ -41,12 +41,10 @@ void lireAutomate(Automate *automate, const char *nom_fichier) {
     automate->nb_etats_initiaux = 0;
     automate->nb_etats_finaux = 0;
 
-    while ((fscanf(fichier, "%d %d %c", &automate->transitions[automate->nb_transitions].etat_depart,
-                                         &automate->transitions[automate->nb_transitions].etat_arrive,
-                                         &automate->transitions[automate->nb_transitions].etiquette) == 3)
-                                        && isalpha(automate->transitions[automate->nb_transitions].etiquette))
+    while (fscanf(fichier, "%d %d %c", &automate->transitions[automate->nb_transitions].etat_depart,
+                                        &automate->transitions[automate->nb_transitions].etat_arrive,
+                                        &automate->transitions[automate->nb_transitions].etiquette) == 3)
     {
-
         automate->nb_transitions++;
         if (automate->nb_transitions >= MAX_TRANSITIONS) {
             fprintf(stderr, "Trop de transitions. Ajustez la valeur de MAX_TRANSITIONS.\n");
@@ -55,9 +53,22 @@ void lireAutomate(Automate *automate, const char *nom_fichier) {
         }
     }
 
+    // Read and store initial states
+    int etat;
+    if (fscanf(fichier, "%d", &etat) != 1) {
+        fprintf(stderr, "Erreur lors de la lecture des états initiaux.\n");
+        fclose(fichier);
+        exit(EXIT_FAILURE);
+    }
+    automate->etats_initiaux[automate->nb_etats_initiaux++] = etat;
+
+    // Read and store final states
+    while (fscanf(fichier, "%d", &etat) == 1) {
+        automate->etats_finaux[automate->nb_etats_finaux++] = etat;
+    }
+
     fclose(fichier);
 }
-
 
 void afficherAutomate(const Automate *automate) {
     printf("Transitions de l'automate :\n");
