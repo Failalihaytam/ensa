@@ -16,8 +16,8 @@ typedef struct
 typedef struct
 {
     Transaction transactions[MAX_LINES];
-    int first;
-    int last;
+    int initial;
+    int final;
 } Automate;
 
 // declarer les prototypes des fonctions
