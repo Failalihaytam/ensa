@@ -26,8 +26,6 @@ typedef struct {
 void count_lines(FILE *file, Automate *automate);
 void last_lines(FILE *file, Automate *automate);
 
-
-
 void lireAutomate(Automate *automate, const char *nom_fichier) {
     FILE *fichier = fopen(nom_fichier, "r");
 
@@ -55,21 +53,22 @@ void lireAutomate(Automate *automate, const char *nom_fichier) {
     }
 
     // Read and store initial states from the same line as transitions
-    int etat;
-    if (fscanf(fichier, "%d", &etat) != 1) {
-        fprintf(stderr, "Erreur lors de la lecture des états initiaux.\n");
-        fclose(fichier);
-        exit(EXIT_FAILURE);
+    rewind(fichier); // Rewind file pointer to the beginning
+    char buffer[100]; // Buffer to store the entire line
+    fgets(buffer, sizeof(buffer), fichier); // Read the first line containing transitions
+    sscanf(buffer, "%*d %*d %*s"); // Skip transitions
+    while (fscanf(fichier, "%d", &automate->etats_initiaux[automate->nb_etats_initiaux]) == 1) {
+        automate->nb_etats_initiaux++;
     }
-    automate->etats_initiaux[automate->nb_etats_initiaux++] = etat;
 
     // Read and store final states from the next line
-    while (fscanf(fichier, "%d", &etat) == 1) {
-        automate->etats_finaux[automate->nb_etats_finaux++] = etat;
+    while (fscanf(fichier, "%d", &automate->etats_finaux[automate->nb_etats_finaux]) == 1) {
+        automate->nb_etats_finaux++;
     }
 
     fclose(fichier);
 }
+
 
 
 void afficherAutomate(const Automate *automate) {
