@@ -5,7 +5,6 @@
 #include <ctype.h>
 
 #define MAX_TRANSITIONS 100
-#define MAX_ALPHABETS 26
 #define MAX_STATES 100
 
 typedef struct {
@@ -49,31 +48,26 @@ void lireAutomate(Automate *automate, const char *nom_fichier) {
         }
     }
 
-    // Read and store initial states from the last but one line
-    char line[MAX_STATES * 2]; // Assuming each state is at most 2 characters long
-    fseek(fichier, 0, SEEK_SET); // Move to the beginning of the file
-    while (fgets(line, sizeof(line), fichier) != NULL) {
-        if (fgets(line, sizeof(line), fichier) == NULL) {
-            break; // End of file
-        }
-        if (fgets(line, sizeof(line), fichier) == NULL) {
-            break; // End of file
-        }
-    }
+    // Read last two lines separately
+    char buffer[100];
+    fgets(buffer, sizeof(buffer), fichier); // Read the first line
+    fgets(buffer, sizeof(buffer), fichier); // Read the second line
 
-    char *token = strtok(line, " ");
+    // Split the line into tokens and store initial states
+    char *token = strtok(buffer, " ");
     while (token != NULL) {
         automate->etats_initiaux[automate->nb_etats_initiaux++] = atoi(token);
         token = strtok(NULL, " ");
     }
 
-    // Read and store final states from the last line
-    if (fgets(line, sizeof(line), fichier) != NULL) {
-        token = strtok(line, " ");
-        while (token != NULL) {
-            automate->etats_finaux[automate->nb_etats_finaux++] = atoi(token);
-            token = strtok(NULL, " ");
-        }
+    // Read the third line
+    fgets(buffer, sizeof(buffer), fichier);
+
+    // Split the line into tokens and store final states
+    token = strtok(buffer, " ");
+    while (token != NULL) {
+        automate->etats_finaux[automate->nb_etats_finaux++] = atoi(token);
+        token = strtok(NULL, " ");
     }
 
     fclose(fichier);
