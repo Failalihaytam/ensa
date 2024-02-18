@@ -92,7 +92,7 @@ void menu(Automate automate)
         do
         {
             printf("entrer un nombre pour choisir votre operation: \n");
-            printf("1- Afficher la liste des transaction\n2- Afficher l'etat initial\n3- Afficher l'etat final\n4- Afficher la liste des alphabets\n5- Quitter le programme\n");
+            printf("1- Afficher la liste des transaction\n2- Afficher l'etat initial\n3- Afficher l'etat final\n4- Afficher la liste des alphabets\n5-Generer le fichier PNG\n6- Quitter le programme\n");
 
             // Read user input as string
             scanf("%s", input);
@@ -131,7 +131,7 @@ void menu(Automate automate)
 
         printf("\n");
     }
-    while ( answer != 5 );
+    while ( answer != 6);
     return;
 }
 void generate_dot(Automate automate) {
