@@ -53,24 +53,22 @@ void lireAutomate(Automate *automate, const char *nom_fichier) {
     }
 
     // Read and store initial states from the same line as transitions
-    rewind(fichier); // Rewind file pointer to the beginning
+    fseek(fichier, 0, SEEK_SET); // Reset file pointer to the beginning
     char buffer[100]; // Buffer to store the entire line
     fgets(buffer, sizeof(buffer), fichier); // Read the first line containing transitions
     sscanf(buffer, "%*d %*d %*s"); // Skip transitions
-    while (fscanf(fichier, "%d", &automate->etats_initiaux[automate->nb_etats_initiaux]) == 1) {
-        automate->nb_etats_initiaux++;
+    int etat;
+    while (fscanf(fichier, "%d", &etat) == 1) {
+        automate->etats_initiaux[automate->nb_etats_initiaux++] = etat;
     }
 
     // Read and store final states from the next line
-    fgets(buffer, sizeof(buffer), fichier); // Read the second line containing final states
-    sscanf(buffer, "%*d"); // Skip initial states
-    while (fscanf(fichier, "%d", &automate->etats_finaux[automate->nb_etats_finaux]) == 1) {
-        automate->nb_etats_finaux++;
+    while (fscanf(fichier, "%d", &etat) == 1) {
+        automate->etats_finaux[automate->nb_etats_finaux++] = etat;
     }
 
     fclose(fichier);
 }
-
 
 
 
