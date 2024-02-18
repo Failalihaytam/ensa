@@ -61,9 +61,9 @@ Automate stock(FILE *file)
         }
         else
         {
-            sscanf(line, "%d", &automate.first);
+            sscanf(line, "%d", &automate.initial);
             fgets(line, sizeof(line), file);
-            sscanf(line, "%d", &automate.last);
+            sscanf(line, "%d", &automate.final);
             break;
         }
     }
@@ -117,11 +117,11 @@ void menu(Automate automate)
         }
         else if (answer == 2)
         {
-            printf("L'etat initial: %d\n", automate.first);
+            printf("L'etat initial: %d\n", automate.initial);
         }
         else if (answer == 3)
         {
-            printf("L'etat final: %d\n", automate.last);
+            printf("L'etat final: %d\n", automate.final);
         }
         else if (answer == 4)
         {
