@@ -77,6 +77,6 @@ void afficherAutomate(const Automate *automate) {
 
 int main() {
     Automate automate;
-    lireAutomate(*automate, "file.txt")
-    afficherAutomate(*automate);
+    lireAutomate(&automate, "file.txt");
+    afficherAutomate(&automate);
 }
