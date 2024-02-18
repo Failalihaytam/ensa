@@ -128,6 +128,10 @@ void menu(Automate automate)
             alphabet(automate);
         }
         else if (answer == 5)
+        {
+            generate_dot(automate);
+        }
+
 
         printf("\n");
     }
