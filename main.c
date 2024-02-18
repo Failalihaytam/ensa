@@ -6,7 +6,7 @@
 
 #define MAX_TRANSITIONS 100
 #define MAX_ALPHABETS 26
-
+#define MAX_STATES 100
 
 typedef struct {
     int etat_depart;
@@ -17,14 +17,11 @@ typedef struct {
 typedef struct {
     Transition transitions[MAX_TRANSITIONS];
     int nb_transitions;
-    int etats_initiaux[MAX_TRANSITIONS];
+    int etats_initiaux[MAX_STATES];
     int nb_etats_initiaux;
-    int etats_finaux[MAX_TRANSITIONS];
+    int etats_finaux[MAX_STATES];
     int nb_etats_finaux;
 } Automate;
-
-void count_lines(FILE *file, Automate *automate);
-void last_lines(FILE *file, Automate *automate);
 
 void lireAutomate(Automate *automate, const char *nom_fichier) {
     FILE *fichier = fopen(nom_fichier, "r");
@@ -52,25 +49,35 @@ void lireAutomate(Automate *automate, const char *nom_fichier) {
         }
     }
 
-    // Read and store initial states from the same line as transitions
-    fseek(fichier, 0, SEEK_SET); // Reset file pointer to the beginning
-    char buffer[100]; // Buffer to store the entire line
-    fgets(buffer, sizeof(buffer), fichier); // Read the first line containing transitions
-    sscanf(buffer, "%*d %*d %*s"); // Skip transitions
-    int etat;
-    while (fscanf(fichier, "%d", &etat) == 1) {
-        automate->etats_initiaux[automate->nb_etats_initiaux++] = etat;
+    // Read and store initial states from the last but one line
+    char line[MAX_STATES * 2]; // Assuming each state is at most 2 characters long
+    fseek(fichier, 0, SEEK_SET); // Move to the beginning of the file
+    while (fgets(line, sizeof(line), fichier) != NULL) {
+        if (fgets(line, sizeof(line), fichier) == NULL) {
+            break; // End of file
+        }
+        if (fgets(line, sizeof(line), fichier) == NULL) {
+            break; // End of file
+        }
     }
 
-    // Read and store final states from the next line
-    while (fscanf(fichier, "%d", &etat) == 1) {
-        automate->etats_finaux[automate->nb_etats_finaux++] = etat;
+    char *token = strtok(line, " ");
+    while (token != NULL) {
+        automate->etats_initiaux[automate->nb_etats_initiaux++] = atoi(token);
+        token = strtok(NULL, " ");
+    }
+
+    // Read and store final states from the last line
+    if (fgets(line, sizeof(line), fichier) != NULL) {
+        token = strtok(line, " ");
+        while (token != NULL) {
+            automate->etats_finaux[automate->nb_etats_finaux++] = atoi(token);
+            token = strtok(NULL, " ");
+        }
     }
 
     fclose(fichier);
 }
-
-
 
 void afficherAutomate(const Automate *automate) {
     printf("Transitions de l'automate :\n");
@@ -93,9 +100,9 @@ void afficherAutomate(const Automate *automate) {
     printf("\n");
 }
 
-
 int main() {
     Automate automate;
     lireAutomate(&automate, "file.txt");
     afficherAutomate(&automate);
+    return 0;
 }
