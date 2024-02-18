@@ -39,8 +39,6 @@ int main()
     // afficher le menu des operations
     menu(my_automate);
 
-    generate_dot(my_automate);
-
     return 0;
 }
 
