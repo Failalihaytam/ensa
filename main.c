@@ -62,12 +62,15 @@ void lireAutomate(Automate *automate, const char *nom_fichier) {
     }
 
     // Read and store final states from the next line
+    fgets(buffer, sizeof(buffer), fichier); // Read the second line containing final states
+    sscanf(buffer, "%*d"); // Skip initial states
     while (fscanf(fichier, "%d", &automate->etats_finaux[automate->nb_etats_finaux]) == 1) {
         automate->nb_etats_finaux++;
     }
 
     fclose(fichier);
 }
+
 
 
 
