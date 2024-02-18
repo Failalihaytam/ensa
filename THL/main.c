@@ -127,6 +127,7 @@ void menu(Automate automate)
         {
             alphabet(automate);
         }
+        else if (answer == 5)
 
         printf("\n");
     }
