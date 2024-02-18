@@ -101,7 +101,7 @@ void menu(Automate automate)
             answer = atoi(input);
 
             // Check if input is a valid integer
-            if (answer < 1 || answer > 5) {
+            if (answer < 1 || answer > 6) {
                 printf("Invalid input. Please enter a number between 1 and 5.\n");
             }
         }
