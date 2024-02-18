@@ -53,6 +53,14 @@ void lireAutomate(Automate *automate, const char *nom_fichier) {
         }
     }
 
+    // Print transitions for debugging
+    printf("Transitions lues :\n");
+    for (int i = 0; i < automate->nb_transitions; i++) {
+        printf("%d -> %d : %c\n", automate->transitions[i].etat_depart,
+                                   automate->transitions[i].etat_arrive,
+                                   automate->transitions[i].etiquette);
+    }
+
     // Read and store initial states
     int etat;
     if (fscanf(fichier, "%d", &etat) != 1) {
@@ -60,7 +68,15 @@ void lireAutomate(Automate *automate, const char *nom_fichier) {
         fclose(fichier);
         exit(EXIT_FAILURE);
     }
+    printf("Etat initial lu : %d\n", etat);
     automate->etats_initiaux[automate->nb_etats_initiaux++] = etat;
+
+    // Print initial state for debugging
+    printf("Etats initiaux stockés : ");
+    for (int i = 0; i < automate->nb_etats_initiaux; i++) {
+        printf("%d ", automate->etats_initiaux[i]);
+    }
+    printf("\n");
 
     // Read and store final states
     while (fscanf(fichier, "%d", &etat) == 1) {
@@ -69,6 +85,7 @@ void lireAutomate(Automate *automate, const char *nom_fichier) {
 
     fclose(fichier);
 }
+
 
 void afficherAutomate(const Automate *automate) {
     printf("Transitions de l'automate :\n");
