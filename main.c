@@ -65,5 +65,6 @@ void afficherAutomate(const Automate *automate) {
 
 int main() {
     Automate automate;
+    lireAutomate(automate, "")
     afficherAutomate(automate);
 }
