@@ -41,6 +41,7 @@ void lireAutomate(Automate *automate, const char *nom_fichier) {
     automate->nb_etats_initiaux = 0;
     automate->nb_etats_finaux = 0;
 
+    // Read transitions
     while (fscanf(fichier, "%d %d %c", &automate->transitions[automate->nb_transitions].etat_depart,
                                         &automate->transitions[automate->nb_transitions].etat_arrive,
                                         &automate->transitions[automate->nb_transitions].etiquette) == 3)
@@ -53,29 +54,20 @@ void lireAutomate(Automate *automate, const char *nom_fichier) {
         }
     }
 
-    // Print transitions for debugging
-    printf("Transitions lues :\n");
-    for (int i = 0; i < automate->nb_transitions; i++) {
-        printf("%d -> %d : %c\n", automate->transitions[i].etat_depart,
-                                   automate->transitions[i].etat_arrive,
-                                   automate->transitions[i].etiquette);
-    }
-
     // Read and store initial states from the same line as transitions
     int etat;
     while (fscanf(fichier, "%d", &etat) == 1) {
         automate->etats_initiaux[automate->nb_etats_initiaux++] = etat;
     }
 
-    // Print initial states for debugging
-    printf("Etats initiaux lus : ");
-    for (int i = 0; i < automate->nb_etats_initiaux; i++) {
-        printf("%d ", automate->etats_initiaux[i]);
+    // Read and store final states from the next line
+    while (fscanf(fichier, "%d", &etat) == 1) {
+        automate->etats_finaux[automate->nb_etats_finaux++] = etat;
     }
-    printf("\n");
 
     fclose(fichier);
 }
+
 
 
 
