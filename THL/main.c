@@ -100,11 +100,11 @@ void menu(Automate automate)
             choix = atoi(input);
 
             // s'assurer si input est un integer
-            if (choix < 1 || choix > 7) {
-                printf("Entrer un nombre entre 1 et 7.\n");
+            if (choix < 1 || choix > 8) {
+                printf("Entrer un nombre entre 1 et 8.\n");
             }
         }
-        while (choix < 1 || choix > 7);
+        while (choix < 1 || choix > 8);
 
         if (choix == 1)
         {
@@ -153,10 +153,14 @@ void menu(Automate automate)
                 printf("ce mot n'est pas engendre par cet automate\n");
             }
         }
+        else if (choix == 7)
+        {
+            test_list(automate, "Mots.txt");
+        }
 
         printf("\n");
     }
-    while (choix != 7);
+    while (choix != 8);
     return;
 }
 void generate_dot(Automate automate) {
@@ -246,6 +250,13 @@ void test_list(Automate automate, char *nom_fichier)
            fprintf(stderr, "Memory allocation failed\n");
             return; // Exit with failure status
         }
-        sscanf("%s", mot);
+        sscanf(line, "%s", mot);
+
+        if (est_engendre(automate, mot))
+        {
+            printf("%s", mot);
+        }
     }
+    fclose(fichier);
+    return;
 }
