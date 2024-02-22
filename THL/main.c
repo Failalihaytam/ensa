@@ -26,6 +26,7 @@ void alphabet(Automate automate);
 void menu(Automate automate);
 void generate_dot(Automate automate);
 bool est_engendre(Automate automate, char *mot);
+void test_list(Automate automate, char *nom_fichier);
 
 int transitions_index = 0;
 
