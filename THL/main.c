@@ -227,7 +227,7 @@ bool est_engendre(Automate automate, char *mot)
     return false;
 }
 
-void test_list(Automate automate, )
+void test_list(Automate automate, char *nom_fichier)
 {
-
+    File *fichier = fopen()
 }
