@@ -194,5 +194,5 @@ bool est_engendre(Automate automate, char *mot)
         }
     }
 
-    if (etat_courant)
+    if (etat_courant == automate)
 }
