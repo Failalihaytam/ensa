@@ -229,5 +229,11 @@ bool est_engendre(Automate automate, char *mot)
 
 void test_list(Automate automate, char *nom_fichier)
 {
-    File *fichier = fopen(nom_fichier, )
+    FILE *fichier = fopen(nom_fichier,"r");
+    if (fichier == NULL)
+    {
+        return;
+    }
+
+    
 }
