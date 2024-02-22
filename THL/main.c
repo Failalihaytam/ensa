@@ -91,7 +91,7 @@ void menu(Automate automate)
         do
         {
             printf("entrer un nombre pour choisir votre operation: \n");
-            printf("1- Afficher la liste des transitions\n2- Afficher l'etat initial\n3- Afficher l'etat final\n4- Afficher la liste des alphabets\n5- Afficher le fichier png \n6-Voir si un mot est engendre par cet automate\n7- Quitter le programme\n");
+            printf("1- Afficher la liste des transitions\n2- Afficher l'etat initial\n3- Afficher l'etat final\n4- Afficher la liste des alphabets\n5- Afficher le fichier png \n6-Voir si un mot est engendre par cet automate\n7-voir la liste des mots engendres\n8-Quitter le programme\n");
 
             // lire input comme chaine de caractere
             scanf("%s", input);
