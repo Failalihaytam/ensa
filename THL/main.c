@@ -238,6 +238,14 @@ void test_list(Automate automate, char *nom_fichier)
 
     while (fgets(line, sizeof(line), fichier) != 0)
     {
-        
+        char *mot = NULL; // Initialize to NULL
+
+        mot = (char *)malloc(sizeof(char) * MAX_LENGTH); // Allocate memory
+        if (mot == NULL)
+        {
+           fprintf(stderr, "Memory allocation failed\n");
+            return; // Exit with failure status
+        }
+        sscanf("%s", mot);
     }
 }
