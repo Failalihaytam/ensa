@@ -255,7 +255,7 @@ void test_list(Automate automate, char *nom_fichier)
 
         if (est_engendre(automate, mot))
         {
-            printf("%s", mot);
+            printf("%s\n", mot);
         }
     }
     fclose(fichier);
