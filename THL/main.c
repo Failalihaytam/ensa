@@ -180,7 +180,19 @@ bool est_engendre(Automate automate, char *mot)
 
         for (int j = 0; j < transitions_index; j++)
         {
-            
+            if (automate.transitions[j].depart == etat_courant && automate.transitions[j].etiquete == caractere)
+            {
+                etat_courant = automate.transitions[j].arrive;
+                transition_trouvee = true;
+                break;
+            }
+        }
+
+        if (!transition_trouvee)
+        {
+            return false;
         }
     }
+
+    if (etat_courant)
 }
