@@ -25,6 +25,7 @@ Automate stock(FILE *file);
 void alphabet(Automate automate);
 void menu(Automate automate);
 void generate_dot(Automate automate);
+bool est_engendre(Automate automate, char *mot);
 
 int transitions_index = 0;
 
@@ -103,7 +104,7 @@ void menu(Automate automate)
                 printf("Entrer un nombre entre 1 et 6.\n");
             }
         }
-        while (choix < 1 || choix > 6);
+        while (choix < 1 || choix > 7);
 
         if (choix == 1)
         {
@@ -129,10 +130,24 @@ void menu(Automate automate)
         {
             generate_dot(automate);
         }
+        else if (choix == 6)
+        {
+            char *mot;
+            printf("entrer le mot: ");
+            scanf("%s", mot);
+            if (est_engendre(automate, mot))
+            {
+                printf("ce mot est engendre par cet automate\n");
+            }
+            else
+            {
+                printf("ce mot n'est pas engendre par cet automate\n");
+            }
+        }
 
         printf("\n");
     }
-    while (choix != 6);
+    while (choix != 7);
     return;
 }
 void generate_dot(Automate automate) {
