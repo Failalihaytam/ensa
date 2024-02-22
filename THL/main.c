@@ -168,3 +168,10 @@ void generate_dot(Automate automate) {
     system("dot -Tpng automate.dot -o automate.png");//system :fonction pour executer les commandes de cmd
     system("start automate.png");
 }
+
+bool est_engendre(Automate automate, char *mot)
+{
+    int etat_courant = automate.initial;
+
+    for (int i = 0, n =)
+}
