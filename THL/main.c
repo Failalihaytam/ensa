@@ -91,7 +91,7 @@ void menu(Automate automate)
         do
         {
             printf("entrer un nombre pour choisir votre operation: \n");
-            printf("1- Afficher la liste des transitions\n2- Afficher l'etat initial\n3- Afficher l'etat final\n4- Afficher la liste des alphabets\n5- Afficher le fichier png \n6- Quitter le programme\n");
+            printf("1- Afficher la liste des transitions\n2- Afficher l'etat initial\n3- Afficher l'etat final\n4- Afficher la liste des alphabets\n5- Afficher le fichier png \n6-Voir si un mot est engendre par cet automate\n7- Quitter le programme\n");
 
             // lire input comme chaine de caractere
             scanf("%s", input);
@@ -100,8 +100,8 @@ void menu(Automate automate)
             choix = atoi(input);
 
             // s'assurer si input est un integer
-            if (choix < 1 || choix > 6) {
-                printf("Entrer un nombre entre 1 et 6.\n");
+            if (choix < 1 || choix > 7) {
+                printf("Entrer un nombre entre 1 et 7.\n");
             }
         }
         while (choix < 1 || choix > 7);
