@@ -234,6 +234,10 @@ void test_list(Automate automate, char *nom_fichier)
     {
         return;
     }
+    char line[MAX_LENGTH];
 
-    
+    while (fgets(line, sizeof(line), fichier) != 0)
+    {
+        
+    }
 }
