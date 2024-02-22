@@ -10,22 +10,22 @@ typedef struct
     int depart;
     int arrive;
     char etiquete;
-} Transaction;
+} Transition;
 
 typedef struct
 {
-    Transaction transactions[MAX_LINES];
+    Transition transitions[MAX_LINES];
     int initial;
     int final;
 } Automate;
 
-// declarer les prototypes des fonctions
+// declarer les fonctions
 Automate stock(FILE *file);
 void alphabet(Automate automate);
 void menu(Automate automate);
 void generate_dot(Automate automate);
 
-int transactions_index = 0;
+int transitions_index = 0;
 
 int main()
 {
@@ -42,7 +42,7 @@ int main()
     return 0;
 }
 
-Automate stock(FILE *file)
+Automate stock(FILE *file) //stocker l'automate
 {
     Automate automate;
 
@@ -50,11 +50,11 @@ Automate stock(FILE *file)
 
     while (fgets(line, sizeof(line), file) != 0)
     {
-        if (sscanf(line, "%d %d %c", &automate.transactions[transactions_index].depart,
-                   &automate.transactions[transactions_index].arrive,
-                   &automate.transactions[transactions_index].etiquete) == 3)
+        if (sscanf(line, "%d %d %c", &automate.transitions[transitions_index].depart,
+                   &automate.transitions[transitions_index].arrive,
+                   &automate.transitions[transitions_index].etiquete) == 3)
         {
-            transactions_index++;
+            transitions_index++;
         }
         else
         {
@@ -72,9 +72,9 @@ Automate stock(FILE *file)
 void alphabet(Automate automate)
 {
     printf("Alphabets:\n");
-    for (int i = 0; i < transactions_index; ++i)
+    for (int i = 0; i < transitions_index; ++i)
     {
-        printf("%c ", automate.transactions[i].etiquete);
+        printf("%c ", automate.transitions[i].etiquete);
     }
     printf("\n");
     return;
@@ -82,57 +82,56 @@ void alphabet(Automate automate)
 
 void menu(Automate automate)
 {
-    int answer;
+    int choix;
     do
     {
         char input[100];
         do
         {
             printf("entrer un nombre pour choisir votre operation: \n");
-            printf("1- Afficher la liste des transaction\n2- Afficher l'etat initial\n3- Afficher l'etat final\n4- Afficher la liste des alphabets\n5-Generer le fichier PNG\n6- Quitter le programme\n");
+            printf("1- Afficher la liste des transitions\n2- Afficher l'etat initial\n3- Afficher l'etat final\n4- Afficher la liste des alphabets\n5- Afficher le fichier png \n6- Quitter le programme\n");
 
-            // Read user input as string
+            // lire input comme chaine de caractere
             scanf("%s", input);
 
-            // Convert input to integer using atoi
-            answer = atoi(input);
+            // convertir input to integer avec atoi
+            choix = atoi(input);
 
-            // Check if input is a valid integer
-            if (answer < 1 || answer > 6) {
-                printf("Invalid input. Please enter a number between 1 and 5.\n");
+            // s'assurer si input est un integer
+            if (choix < 1 || choix > 6) {
+                printf("Entrer un nombre entre 1 et 6.\n");
             }
         }
-        while (answer < 1 || answer > 6);
+        while (choix < 1 || choix > 6);
 
-        if (answer == 1)
+        if (choix == 1)
         {
-            printf("Transactions:\n");
-            for (int i = 0; i < transactions_index; i++)
+            printf("Transitions:\n");
+            for (int i = 0; i < transitions_index; i++)
             {
-                printf("(%d, %c) ->  %d \n", automate.transactions[i].depart, automate.transactions[i].etiquete, automate.transactions[i].arrive);
+                printf("(%d, %c) ->  %d \n", automate.transitions[i].depart, automate.transitions[i].etiquete, automate.transitions[i].arrive);
             }
         }
-        else if (answer == 2)
+        else if (choix == 2)
         {
             printf("L'etat initial: %d\n", automate.initial);
         }
-        else if (answer == 3)
+        else if (choix == 3)
         {
             printf("L'etat final: %d\n", automate.final);
         }
-        else if (answer == 4)
+        else if (choix == 4)
         {
             alphabet(automate);
         }
-        else if (answer == 5)
+        else if (choix == 5)
         {
             generate_dot(automate);
         }
 
-
         printf("\n");
     }
-    while ( answer != 6);
+    while (choix != 6);
     return;
 }
 void generate_dot(Automate automate) {
@@ -142,29 +141,30 @@ void generate_dot(Automate automate) {
         return;
     }
     fprintf(file_dot,"digraph automate{\n");
-    for (int i = 0; i < transactions_index; i++){
-        fprintf(file_dot,  "%d -> %d [label=%c];\n", automate.transactions[i].depart, automate.transactions[i].arrive, automate.transactions[i].etiquete);
+    for (int i = 0; i < transitions_index; i++){
+        fprintf(file_dot,  "%d -> %d [label=%c];\n", automate.transitions[i].depart, automate.transitions[i].arrive, automate.transitions[i].etiquete);
     }
     fprintf(file_dot,"%d [color=green];\n",automate.initial);
     fprintf(file_dot,"%d [color=blue];\n",automate.final);
 
-    for(int i=0; i < transactions_index; i++)
+    for(int i=0; i < transitions_index; i++)
     {
         bool trouve = false;
-        for(int j=0; j < transactions_index; j++)
+        for(int j=0; j < transitions_index; j++)
         {
-            if (automate.transactions[i].depart == automate.transactions[j].arrive)
+            if (automate.transitions[i].depart == automate.transitions[j].arrive)
             {
                 trouve = true;
                 break;
             }
         }
-        if (trouve == false && automate.transactions[i].depart != automate.initial)
+        if (trouve == false && automate.transitions[i].depart != automate.initial)//etats inatteignables
         {
-            fprintf(file_dot,"%d [color=grey];\n",automate.transactions[i].depart);
+            fprintf(file_dot,"%d [color=grey];\n",automate.transitions[i].depart);
         }
     }
     fprintf(file_dot,"}");
     fclose(file_dot);
-    system("dot -Tpng automate.dot -o automate.png");
+    system("dot -Tpng automate.dot -o automate.png");//system :fonction pour executer les commandes de cmd
+    system("start automate.png");
 }
