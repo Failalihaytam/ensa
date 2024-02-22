@@ -194,5 +194,10 @@ bool est_engendre(Automate automate, char *mot)
         }
     }
 
-    if (etat_courant == automate)
+    if (etat_courant == automate.final)
+    {
+        return true;
+    }
+
+    return false;
 }
