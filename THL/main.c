@@ -132,9 +132,18 @@ void menu(Automate automate)
         }
         else if (choix == 6)
         {
-            char *mot;
+            char *mot = NULL; // Initialize to NULL
+
             printf("entrer le mot: ");
+            mot = (char *)malloc(sizeof(char) * MAX_LENGTH); // Allocate memory
+            if (mot == NULL)
+            {
+                fprintf(stderr, "Memory allocation failed\n");
+                return; // Exit with failure status
+            }
+
             scanf("%s", mot);
+
             if (est_engendre(automate, mot))
             {
                 printf("ce mot est engendre par cet automate\n");
