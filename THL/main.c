@@ -227,4 +227,7 @@ bool est_engendre(Automate automate, char *mot)
     return false;
 }
 
+void test_list(Automate automate, )
+{
 
+}
