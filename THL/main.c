@@ -175,6 +175,12 @@ bool est_engendre(Automate automate, char *mot)
 
     for (int i = 0, n = strlen(mot); i < n; i++)
     {
-        
+        char caractere = mot[i];
+        bool transition_trouvee = false;
+
+        for (int j = 0; j < transitions_index; j++)
+        {
+            
+        }
     }
 }
