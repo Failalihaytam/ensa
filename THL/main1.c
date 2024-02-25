@@ -224,5 +224,6 @@ void tester_list(Autoamte automate, char *nom_fichier)
             printf("%s\n", mot);
         }
     }
+    fclose(fichier);
     return;
 }
