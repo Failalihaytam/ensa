@@ -207,5 +207,9 @@ void tester_list(Autoamte automate, char *nom_fichier)
         return;
     }
 
-    while(fgets())
+    char line[MAX_LENGTH];
+    while(fgets(line, sizeof(line), fichier) != 0)
+    {
+        char mot 
+    }
 }
