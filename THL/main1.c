@@ -210,6 +210,19 @@ void tester_list(Autoamte automate, char *nom_fichier)
     char line[MAX_LENGTH];
     while(fgets(line, sizeof(line), fichier) != 0)
     {
-        char mot 
+        char *mot = NULL;
+        mot = malloc(sizeof(char) * MAX_LENGTH);
+        if (mot = NULL)
+        {
+            return;
+        }
+
+        sscanf(line, "%s", mot);
+
+        if (est_engendre(automate, mot) == true)
+        {
+            printf("%s\n", mot);
+        }
     }
+    return;
 }
