@@ -176,13 +176,21 @@ bool est_engendre(Automate automate, char *mot)
     for (int i = 0; i < strlen(mot); i++)
     {
         char lettre = mot[i];
+        bool trouve = false;
 
         for (int j = 0; j < transition_index; j++)
         {
             if (automate.transitions[j].depart == etat_courant && automate.transitions[j].etiquete == lettre)
             {
-                
+                etat_courant = automate.transitions[j].arrive;
+                trouve = true;
+                break;
             }
         }
+        if (trouve == false)
+        {
+            return false;
+        }
     }
+    
 }
