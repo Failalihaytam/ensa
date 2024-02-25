@@ -199,4 +199,13 @@ bool est_engendre(Automate automate, char *mot)
     return false;
 }
 
-void 
+void tester_list(Autoamte automate, char *nom_fichier)
+{
+    FILE *fichier = fopen(nom_fichier, "r");
+    if (fichier == NULL)
+    {
+        return;
+    }
+
+    
+}
