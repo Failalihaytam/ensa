@@ -139,7 +139,6 @@ void menu(Automate automate)
             mot = (char *)malloc(sizeof(char) * MAX_LENGTH); // Allocate memory
             if (mot == NULL)
             {
-                fprintf(stderr, "Memory allocation failed\n");
                 return; // Exit with failure status
             }
 
