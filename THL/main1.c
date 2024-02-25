@@ -169,3 +169,7 @@ void generate_dot(Automate automate) {
     system("start automate.png");
 }
 
+bool est_engendre(Automate automate, char *mot)
+{
+    
+}
