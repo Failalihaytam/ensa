@@ -199,4 +199,4 @@ bool est_engendre(Automate automate, char *mot)
     return false;
 }
 
-
+void 
