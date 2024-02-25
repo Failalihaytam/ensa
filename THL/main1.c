@@ -178,7 +178,7 @@ bool est_engendre(Automate automate, char *mot)
         char lettre = mot[i];
         bool trouve = false;
 
-        for (int j = 0; j < transition_index; j++)
+        for (int j = 0; j < transitions_index; j++)
         {
             if (automate.transitions[j].depart == etat_courant && automate.transitions[j].etiquete == lettre)
             {
