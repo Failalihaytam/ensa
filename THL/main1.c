@@ -207,5 +207,5 @@ void tester_list(Autoamte automate, char *nom_fichier)
         return;
     }
 
-    
+    while(fgets())
 }
