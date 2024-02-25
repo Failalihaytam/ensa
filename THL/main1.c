@@ -171,5 +171,18 @@ void generate_dot(Automate automate) {
 
 bool est_engendre(Automate automate, char *mot)
 {
-    
+    int etat_courant = automate.initial;
+
+    for (int i = 0; i < strlen(mot); i++)
+    {
+        char lettre = mot[i];
+
+        for (int j = 0; j < transition_index; j++)
+        {
+            if (automate.transitions[j].depart == etat_courant && automate.transitions[j].etiquete == lettre)
+            {
+                
+            }
+        }
+    }
 }
