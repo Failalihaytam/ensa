@@ -168,3 +168,4 @@ void generate_dot(Automate automate) {
     system("dot -Tpng automate.dot -o automate.png");//system :fonction pour executer les commandes de cmd
     system("start automate.png");
 }
+
