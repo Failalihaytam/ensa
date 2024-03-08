@@ -41,8 +41,10 @@ int main()
             break;
         case 2:
             numeroter_enrg("Mail.txt");
+            break;
         case 3:
             parite("Mail.txt");
+            break;
         case 4:
             printf("entrer l'adresse que vous voullez chercher: ");
             scanf("%s", adr_exp);
@@ -55,10 +57,12 @@ int main()
             {
                 printf("C'est l'adresse numero %d\n", i);
             }
+            break;
         case 5:
             printf("entrer l'adresse que vous voullez afficher ses courriers non lus: ");
             scanf("%s", adr_exp);
             afficher_mail_exped("Mail.txt", adr_exp);
+            break;
     }
     return 0;
 }
