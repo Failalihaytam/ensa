@@ -64,8 +64,6 @@ int main()
 }
 
 
-
-
 //2
 Courrier saisir_courrier()
 {
