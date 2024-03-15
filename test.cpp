@@ -34,7 +34,6 @@ void V(Semaphore *s) {
         // If there are processes in waiting queue, wake up one process
         Process *p = s->q.front();
         s->q.pop();
-        wakeup(p); // Placeholder for wake up process
     }
 }
 
