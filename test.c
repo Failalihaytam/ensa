@@ -1,38 +1,44 @@
 #include <stdio.h>
-#include<stdlib.h>
-#include<sys/queue.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdbool.h>
+#include <queue.h>
 
+// Define a structure for the process
 typedef struct {
-    Queue<process> q;
+    // Define process attributes here
+} Process;
+
+// Define Semaphore structure
+typedef struct {
+    std::queue<Process*> q;
     int value;
-}Semaphore;
+} Semaphore;
 
-void P(Semaphore s)
-{
-    if (s.value == 1) {
-        s.value = 0;
-    }
-    else {
-        s.q.push(P);
-        sleep();
+// Function to acquire the semaphore
+void P(Semaphore *s) {
+    if (s->value == 1) {
+        s->value = 0;
+    } else {
+        // If semaphore is not available, put process in waiting queue
+        s->q.push((Process*)P);
+        sleep(1); // Placeholder for sleep
     }
 }
 
-void V(Semaphore s)
-{
-    if (s.q is empty) {
-        s.value = 1;
-    }
-    else {
-
-        // Get a process from the Waiting Queue
-        Process p = q.front();
-        // Remove the process from waiting
-        q.pop();
-        wakeup(p);
+// Function to release the semaphore
+void V(Semaphore *s) {
+    if (s->q.empty()) {
+        s->value = 1;
+    } else {
+        // If there are processes in waiting queue, wake up one process
+        Process *p = s->q.front();
+        s->q.pop();
+        wakeup(p); // Placeholder for wake up process
     }
 }
+
 int main() {
-
+    // Write your main function logic here
     return 0;
 }
