@@ -520,3 +520,4 @@ void supprimer_epsilon_transitions(Automate automate)
     system("dot -Tpng automate_transitions.dot -o automate_transitions.png");//system :fonction pour executer les commandes de cmd
     system("start automate_transitions.png");
 }
+
