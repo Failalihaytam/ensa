@@ -402,7 +402,7 @@ Automate intersection(Automate A1, Automate A2) {
 
 
 
-FILE *file_dot = fopen("intersection.dot", "w");
+    FILE *file_dot = fopen("intersection.dot", "w");
 
 
     fprintf(file_dot, "digraph intersection {\n");
@@ -427,7 +427,7 @@ FILE *file_dot = fopen("intersection.dot", "w");
     return product_automaton;
 }
 
-/*void supprimer_epsilon_transitions(Automate automate)
+void supprimer_epsilon_transitions(Automate automate)
 {
     int etat_final[MAX_LENGTH];
     int n=0;
@@ -519,4 +519,4 @@ FILE *file_dot = fopen("intersection.dot", "w");
     fclose(file_dot);
     system("dot -Tpng automate_transitions.dot -o automate_transitions.png");//system :fonction pour executer les commandes de cmd
     system("start automate_transitions.png");
-}*/
+}
