@@ -716,7 +716,7 @@ bool ensemble_existe_deja(EnsembleEtats ensemble, EnsembleEtats ensembles[], int
 // Fonction pour convertir un automate non déterministe en un automate déterministe
 void convertir_automate(Automate automate)
 {
-    printf("haytam1\n");
+    printf("haytam1
     Automate automate_d;
     automate_d.nbr_transitions = 0;
 
