@@ -774,13 +774,13 @@ void convertir_automate(Automate automate)
 
     // Déterminer l'état initial de l'automate déterministe
     automate_d.initial = 0;
-    printf("jhh");
+    
     FILE *file_dot = fopen("automate_deterministe.dot","w");
     if (file_dot == NULL)
     {
         return;
     }
-    printf("bd");
+
     fprintf(file_dot,"digraph automate_deterministe{\n");
     for (int i = 0; i < automate_d.nbr_transitions; i++)
     {
