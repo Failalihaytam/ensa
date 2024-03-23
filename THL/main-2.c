@@ -626,7 +626,52 @@ void convertir_automate(Automate automate_nd) {
     // Déterminer l'état initial de l'automate déterministe
     automate_d.initial = 0;
 
-    
+    FILE *file_dot = fopen("automate_deterministe.dot","w");
+    if (file_dot == NULL)
+    {
+        return;
+    }
+    fprintf(file_dot,"digraph automate{\n");
+    for (int i = 0; i < automate.nbr_transitions; i++)
+    {
+        fprintf(file_dot,  "%d -> %d [label=%c];\n", automate.transitions[i].depart, automate.transitions[i].arrive, automate.transitions[i].etiquete);
+    }
+    fprintf(file_dot,"%d [color=green];\n",automate.initial);
+    fprintf(file_dot,"%d [color=blue];\n",automate.final);
+
+    for(int i=0; i < automate.nbr_transitions; i++)
+    {
+        bool trouve = false;
+        for(int j=0; j < automate.nbr_transitions; j++)
+        {
+            if (automate.transitions[i].depart == automate.transitions[j].arrive)
+            {
+                trouve = true;
+                break;
+            }
+        }
+        if (trouve == false && automate.transitions[i].depart != automate.initial)//etats inatteignables
+        {
+
+            fprintf(file_dot,"%d [color=grey];\n",automate.transitions[i].depart);
+        }
+    }
+    for (int i=0;i<n+1;i++)
+    {
+        if(etat_final[i]==automate.initial)
+        {
+            fprintf(file_dot,"%d [style=filled,color=blue];\n", etat_final[i], etat_final[i]);
+        }
+        else
+        {
+            fprintf(file_dot,"%d [color=blue];\n",etat_final[i]);
+        }
+    }
+    fprintf(file_dot,"}");
+    fclose(file_dot);
+    system("dot -Tpng automate_transitions.dot -o automate_transitions.png");//system :fonction pour executer les commandes de cmd
+    system("start automate_transitions.png");
+
 }
 
 
