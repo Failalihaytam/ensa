@@ -43,6 +43,9 @@ void Union_Automates(Automate A1,Automate A2);
 void etoile(Automate A1);
 void produit(Automate A1,Automate A2) ;
 Automate intersection(Automate A1,Automate A2);
+EnsembleEtats calculer_etats_atteignables(Automate automate, EnsembleEtats ensemble, char symbole);
+bool ensemble_existe_deja(EnsembleEtats ensemble, EnsembleEtats ensembles[], int nbr_ensembles);
+void convertir_automate(Automate automate_nd);
 //void supprimer_epsilon_transitions(Automate automate);
 
 
@@ -62,7 +65,7 @@ int main()
     Automate my_automate2 = stock(my_file2);
     Automate my_automate3 = stock(my_file3);
     // afficher le menu des operations
-    menu(my_automate1, my_automate2, my_automate3);
+    \menu(my_automate1, my_automate2, my_automate3);
 
     return 0;
 }
@@ -528,7 +531,8 @@ void supprimer_epsilon_transitions(Automate automate)
     system("start automate_transitions.png");
 }
 
-EnsembleEtats calculer_etats_atteignables(Automate automate, EnsembleEtats ensemble, char symbole) {
+EnsembleEtats calculer_etats_atteignables(Automate automate, EnsembleEtats ensemble, char symbole)
+{
     EnsembleEtats etats_atteignables;
     etats_atteignables.nbr_etats = 0;
 
@@ -548,7 +552,8 @@ EnsembleEtats calculer_etats_atteignables(Automate automate, EnsembleEtats ensem
 }
 
 // Fonction pour vérifier si un ensemble existe déjà dans la liste des ensembles
-bool ensemble_existe_deja(EnsembleEtats ensemble, EnsembleEtats ensembles[], int nbr_ensembles) {
+bool ensemble_existe_deja(EnsembleEtats ensemble, EnsembleEtats ensembles[], int nbr_ensembles)
+{
     for (int i = 0; i < nbr_ensembles; i++) {
         // Comparer les ensembles élément par élément
         if (ensemble.nbr_etats == ensembles[i].nbr_etats) {
