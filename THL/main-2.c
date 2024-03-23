@@ -64,8 +64,9 @@ int main()
     Automate my_automate1 = stock(my_file1);
     Automate my_automate2 = stock(my_file2);
     Automate my_automate3 = stock(my_file3);
+    convertir_a~utomate(my_automate1);
     // afficher le menu des operations
-    \menu(my_automate1, my_automate2, my_automate3);
+    //menu(my_automate1, my_automate2, my_automate3);
 
     return 0;
 }
