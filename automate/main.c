@@ -365,7 +365,7 @@ void etoile(Automate A){
     }
     fprintf(file_dot,"start -> a%d [label=ε]; \n", A.initial);
     fprintf(file_dot,"a%d -> end [label=ε]; \n", A.final);
-    fprintf(file_dot,"start -> end [label=ε]; \n", A.initial);
+    fprintf(file_dot,"start -> end [label=ε]; \n");
     fprintf(file_dot,"end -> a%d [label=ε]; \n", A.initial);
 
 
