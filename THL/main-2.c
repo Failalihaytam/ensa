@@ -638,28 +638,28 @@ void convertir_automate(Automate automate_nd) {
         return;
     }
     fprintf(file_dot,"digraph automate{\n");
-    for (int i = 0; i < automate.nbr_transitions; i++)
+    for (int i = 0; i < automate_d.nbr_transitions; i++)
     {
-        fprintf(file_dot,  "%d -> %d [label=%c];\n", automate.transitions[i].depart, automate.transitions[i].arrive, automate.transitions[i].etiquete);
+        fprintf(file_dot,  "%d -> %d [label=%c];\n", automate_d.transitions[i].depart, automate_d.transitions[i].arrive, automate_d.transitions[i].etiquete);
     }
-    fprintf(file_dot,"%d [color=green];\n",automate.initial);
-    fprintf(file_dot,"%d [color=blue];\n",automate.final);
+    fprintf(file_dot,"%d [color=green];\n",automate_d.initial);
+    fprintf(file_dot,"%d [color=blue];\n",automate_d.final);
 
     for(int i=0; i < automate.nbr_transitions; i++)
     {
         bool trouve = false;
-        for(int j=0; j < automate.nbr_transitions; j++)
+        for(int j=0; j < automate_d.nbr_transitions; j++)
         {
-            if (automate.transitions[i].depart == automate.transitions[j].arrive)
+            if (automate_d.transitions[i].depart == automate_d.transitions[j].arrive)
             {
                 trouve = true;
                 break;
             }
         }
-        if (trouve == false && automate.transitions[i].depart != automate.initial)//etats inatteignables
+        if (trouve == false && automate_d.transitions[i].depart != automate_d.initial)//etats inatteignables
         {
 
-            fprintf(file_dot,"%d [color=grey];\n",automate.transitions[i].depart);
+            fprintf(file_dot,"%d [color=grey];\n",automate_d.transitions[i].depart);
         }
     }
     fprintf(file_dot,"}");
