@@ -69,9 +69,8 @@ int main()
     Automate minimal = stock(my_file6);
     Automate deterministe = stock(my_file7);
 
-    printf("haytam\n");
     convertir_automate(deterministe);
-    printf("zok\n");
+
 
     // afficher le menu des operations
     //menu(my_automate, my_automate1, my_automate2, my_automate3, my_inter1, my_inter2, minimal, deterministe);
@@ -774,7 +773,7 @@ void convertir_automate(Automate automate)
 
     // Déterminer l'état initial de l'automate déterministe
     automate_d.initial = 0;
-    
+
     FILE *file_dot = fopen("automate_deterministe.dot","w");
     if (file_dot == NULL)
     {
