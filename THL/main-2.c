@@ -528,3 +528,105 @@ void supprimer_epsilon_transitions(Automate automate)
     system("start automate_transitions.png");
 }
 
+EnsembleEtats calculer_etats_atteignables(Automate automate, EnsembleEtats ensemble, char symbole) {
+    EnsembleEtats etats_atteignables;
+    etats_atteignables.nbr_etats = 0;
+
+    // Parcourir toutes les transitions de l'automate
+    for (int i = 0; i < automate.nbr_transitions; i++) {
+        Transition transition = automate.transitions[i];
+        // Vérifier si la transition part d'un état de l'ensemble actuel avec le symbole donné
+        for (int j = 0; j < ensemble.nbr_etats; j++) {
+            if (transition.depart == ensemble.etats[j] && transition.etiquete == symbole) {
+                // Ajouter l'état d'arrivée à l'ensemble des états atteignables
+                etats_atteignables.etats[etats_atteignables.nbr_etats] = transition.arrive;
+                etats_atteignables.nbr_etats++;
+            }
+        }
+    }
+    return etats_atteignables;
+}
+
+// Fonction pour vérifier si un ensemble existe déjà dans la liste des ensembles
+bool ensemble_existe_deja(EnsembleEtats ensemble, EnsembleEtats ensembles[], int nbr_ensembles) {
+    for (int i = 0; i < nbr_ensembles; i++) {
+        // Comparer les ensembles élément par élément
+        if (ensemble.nbr_etats == ensembles[i].nbr_etats) {
+            bool meme_ensemble = true;
+            for (int j = 0; j < ensemble.nbr_etats; j++) {
+                if (ensemble.etats[j] != ensembles[i].etats[j]) {
+                    meme_ensemble = false;
+                    break;
+                }
+            }
+            if (meme_ensemble) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+// Fonction pour convertir un automate non déterministe en un automate déterministe
+void convertir_automate(Automate automate_nd) {
+    Automate automate_d;
+    automate_d.nbr_transitions = 0;
+
+    // Initialiser l'ensemble initial avec l'état initial de l'automate non déterministe
+    EnsembleEtats ensemble_initial;
+    ensemble_initial.etats[0] = automate_nd.initial;
+    ensemble_initial.nbr_etats = 1;
+
+    // Initialiser la liste des ensembles avec l'ensemble initial
+    EnsembleEtats ensembles[MAX_LINES];
+    ensembles[0] = ensemble_initial;
+    int nbr_ensembles = 1;
+
+    // Marquer l'ensemble initial comme non traité
+    bool ensembles_traites[MAX_LINES] = {false};
+    ensembles_traites[0] = true;
+
+    // Traitement des ensembles jusqu'à ce qu'ils soient tous traités
+    for (int i = 0; i < nbr_ensembles; i++) {
+        // Pour chaque symbole de l'alphabet
+        for (int sym = 'a'; sym <= 'z'; sym++) {
+            // Calculer les états atteignables à partir de l'ensemble actuel avec le symbole actuel
+            EnsembleEtats etats_atteignables = calculer_etats_atteignables(automate_nd, ensembles[i], sym);
+            // Si l'ensemble d'états atteignables est non vide
+            if (etats_atteignables.nbr_etats > 0) {
+                // Si cet ensemble n'existe pas déjà dans la liste des ensembles
+                if (!ensemble_existe_deja(etats_atteignables, ensembles, nbr_ensembles)) {
+                    // Ajouter cet ensemble à la liste des ensembles et marquer comme non traité
+                    ensembles[nbr_ensembles] = etats_atteignables;
+                    ensembles_traites[nbr_ensembles] = false;
+                    nbr_ensembles++;
+                }
+                // Ajouter une transition de l'ensemble actuel vers l'ensemble atteignable avec le symbole actuel
+                automate_d.transitions[automate_d.nbr_transitions].depart = i;
+                automate_d.transitions[automate_d.nbr_transitions].arrive = nbr_ensembles - 1;
+                automate_d.transitions[automate_d.nbr_transitions].etiquete = sym;
+                automate_d.nbr_transitions++;
+            }
+        }
+    }
+
+    // Déterminer les états finaux de l'automate déterministe
+    for (int i = 0; i < nbr_ensembles; i++)
+    {
+        for (int j = 0; j < ensembles[i].nbr_etats; j++)
+        {
+            if (ensembles[i].etats[j] == automate_nd.final)
+            {
+                automate_d.final = i;
+                break;
+            }
+        }
+    }
+
+    // Déterminer l'état initial de l'automate déterministe
+    automate_d.initial = 0;
+
+    
+}
+
+
