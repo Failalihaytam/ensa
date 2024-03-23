@@ -656,22 +656,10 @@ void convertir_automate(Automate automate_nd) {
             fprintf(file_dot,"%d [color=grey];\n",automate.transitions[i].depart);
         }
     }
-    for (int i=0;i<n+1;i++)
-    {
-        if(etat_final[i]==automate.initial)
-        {
-            fprintf(file_dot,"%d [style=filled,color=blue];\n", etat_final[i], etat_final[i]);
-        }
-        else
-        {
-            fprintf(file_dot,"%d [color=blue];\n",etat_final[i]);
-        }
-    }
     fprintf(file_dot,"}");
     fclose(file_dot);
-    system("dot -Tpng automate_transitions.dot -o automate_transitions.png");//system :fonction pour executer les commandes de cmd
-    system("start automate_transitions.png");
-
+    system("dot -Tpng automate_deterministe.dot -o automate_deterministe.png");//system :fonction pour executer les commandes de cmd
+    system("start automate_deterministe.png");
 }
 
 
