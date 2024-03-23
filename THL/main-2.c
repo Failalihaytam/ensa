@@ -20,11 +20,18 @@ typedef struct
     int final;
     int nbr_transitions;
 } Automate;
+
 typedef struct
 {
     int etat;
     char etiquete;
 } Etiquette;
+
+typedef struct {
+    int etats[MAX_LINES];
+    int nbr_etats;
+} EnsembleEtats;
+
 // declarer les fonctions
 Automate stock(FILE *file);
 void alphabet(Automate automate);
