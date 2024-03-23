@@ -519,7 +519,7 @@ void supprimer_epsilon_transitions(Automate automate)
     {
         if(etat_final[i]==automate.initial)
         {
-            fprintf(file_dot,"%d [style=filled,color=blue];\n", etat_final[i], etat_final[i]);
+            fprintf(file_dot,"%d [style=filled,color=blue];\n", etat_final[i]);
         }
         else
         {
