@@ -645,7 +645,7 @@ void convertir_automate(Automate automate_nd) {
     fprintf(file_dot,"%d [color=green];\n",automate_d.initial);
     fprintf(file_dot,"%d [color=blue];\n",automate_d.final);
 
-    for(int i=0; i < automate.nbr_transitions; i++)
+    for(int i=0; i < automate_d.nbr_transitions; i++)
     {
         bool trouve = false;
         for(int j=0; j < automate_d.nbr_transitions; j++)
