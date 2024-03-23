@@ -66,7 +66,7 @@ int main()
     Automate my_automate3 = stock(my_file3);
     convertir_automate(my_automate1);
     // afficher le menu des operations
-    //menu(my_automate1, my_automate2, my_automate3);
+    menu(my_automate1, my_automate2, my_automate3);
 
     return 0;
 }
