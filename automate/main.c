@@ -423,7 +423,8 @@ Automate Intersection(Automate A3, Automate A4) {
     fprintf(file_dot, "digraph intersection {\n");
 
     // Parcourir toutes les transitions de l'automate produit
-    for (int i = 0; i < intersection_automate.nbr_transitions; i++) {
+    for (int i = 0; i < intersection_automate.nbr_transitions; i++)
+    {
         fprintf(file_dot, "%d -> %d [label=\"%c\"];\n", intersection_automate.transitions[i].depart, intersection_automate.transitions[i].arrive, intersection_automate.transitions[i].etiquete);
     }
 
