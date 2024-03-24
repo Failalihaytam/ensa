@@ -417,7 +417,7 @@ Automate Intersection(Automate A3, Automate A4) {
     }
 
 
-FILE *file_dot = fopen("intersection.dot", "w");
+    FILE *file_dot = fopen("intersection.dot", "w");
 
 
     fprintf(file_dot, "digraph intersection {\n");
