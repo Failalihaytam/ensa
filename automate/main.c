@@ -69,7 +69,6 @@ int main()
     Automate minimal = stock(my_file6);
     Automate deterministe = stock(my_file7);
 
-    convertir_automate(deterministe);
 
 
     // afficher le menu des operations
@@ -666,11 +665,6 @@ Automate minimiser(Automate automate) {
     return minimal_automate;
 }
 
-
-
-
-
-
 EnsembleEtats calculer_etats_atteignables(Automate automate, EnsembleEtats ensemble, char symbole)
 {
     EnsembleEtats etats_atteignables;
@@ -810,6 +804,3 @@ void convertir_automate(Automate automate)
     system("dot -Tpng automate_deterministe.dot -o automate_deterministe.png");//system :fonction pour executer les commandes de cmd
     system("start automate_deterministe.png");
 }
-
-
-
