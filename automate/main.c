@@ -416,9 +416,12 @@ void Intersection(Automate A3, Automate A4) {
         }
     }
 
-
+    printf("hello\n");
     FILE *file_dot = fopen("intersection.dot", "w");
-
+    if(file_dot == NULL)
+    {
+        return;
+    }
 
     fprintf(file_dot, "digraph intersection {\n");
 
