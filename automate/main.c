@@ -190,7 +190,7 @@ void menu(Automate automate, Automate automate1, Automate automate2, Automate au
         }
         else if (choix == 8)
         {
-            Union_Automates(automate1,automate2);
+            Union_Automates(automate1, automate2);
         }
         else if (choix == 9)
         {
@@ -198,11 +198,11 @@ void menu(Automate automate, Automate automate1, Automate automate2, Automate au
         }
         else if (choix == 10)
         {
-            produit(automate1,automate2);
+            produit(automate1, automate2);
         }
         else if (choix == 11)
         {
-            Intersection(automate4,automate5);
+            Intersection(automate4, automate5);
         }
         else if (choix == 12)
         {
@@ -397,7 +397,7 @@ void produit(Automate A1,Automate A2) {
     system("start produit.png");
 }
 
-Automate Intersection(Automate A3, Automate A4) {
+void Intersection(Automate A3, Automate A4) {
     Automate intersection_automate;
 
     for (int i = 0; i < A3.nbr_transitions; i++) {
@@ -440,7 +440,6 @@ Automate Intersection(Automate A3, Automate A4) {
     system("dot -Tpng intersection.dot -o intersection.png");
     // Ouvrir le fichier PNG généré
     system("start intersection.png");
-    return intersection_automate;
 }
 
 void supprimer_epsilon_transitions(Automate automate)
