@@ -36,7 +36,7 @@ void test_list(Automate automate, char *nom_fichier);
 void Union_Automates(Automate A1,Automate A2);
 void etoile(Automate A1);
 void produit(Automate A1,Automate A2);
-void Intersection(Automate A3,Automate A4);
+Automate Intersection(Automate A3,Automate A4);
 void supprimer_epsilon_transitions(Automate automate);
 EnsembleEtats calculer_etats_atteignables(Automate automate, EnsembleEtats ensemble, char symbole);
 bool ensemble_existe_deja(EnsembleEtats ensemble, EnsembleEtats ensembles[], int nbr_ensembles);
@@ -400,7 +400,7 @@ void produit(Automate A1,Automate A2) {
     system("start produit.png");
 }
 
-void Intersection(Automate A3, Automate A4) {
+Automate Intersection(Automate A3, Automate A4) {
     Automate intersection_automate;
 
     for (int i = 0; i < A3.nbr_transitions; i++) {
@@ -420,7 +420,7 @@ void Intersection(Automate A3, Automate A4) {
     }
 
 
-    FILE *file_dot = fopen("intersection.dot", "w");
+FILE *file_dot = fopen("intersection.dot", "w");
 
 
     fprintf(file_dot, "digraph intersection {\n");
@@ -442,6 +442,7 @@ void Intersection(Automate A3, Automate A4) {
     system("dot -Tpng intersection.dot -o intersection.png");
     // Ouvrir le fichier PNG généré
     system("start intersection.png");
+    return intersection_automate;
 }
 
 void supprimer_epsilon_transitions(Automate automate)
