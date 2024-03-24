@@ -69,10 +69,8 @@ int main()
     Automate minimal = stock(my_file6);
     Automate deterministe = stock(my_file7);
 
-
-
     // afficher le menu des operations
-    //menu(my_automate, my_automate1, my_automate2, my_automate3, my_inter1, my_inter2, minimal, deterministe);
+    menu(my_automate, my_automate1, my_automate2, my_automate3, my_inter1, my_inter2, minimal, deterministe);
 
     return 0;
 }
