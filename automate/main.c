@@ -418,6 +418,8 @@ void Intersection(Automate A3, Automate A4)
         }
     }
 
+    intersection_automate.initial = intersection_automate.transitions
+
     printf("hello\n");
     FILE *file_dot = fopen("intersection.dot", "w");
     if(file_dot == NULL)
