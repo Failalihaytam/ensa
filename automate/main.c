@@ -36,7 +36,7 @@ void test_list(Automate automate, char *nom_fichier);
 void Union_Automates(Automate A1,Automate A2);
 void etoile(Automate A1);
 void produit(Automate A1,Automate A2);
-Automate Intersection(Automate A3,Automate A4);
+void Intersection(Automate A3,Automate A4);
 void supprimer_epsilon_transitions(Automate automate);
 EnsembleEtats calculer_etats_atteignables(Automate automate, EnsembleEtats ensemble, char symbole);
 bool ensemble_existe_deja(EnsembleEtats ensemble, EnsembleEtats ensembles[], int nbr_ensembles);
