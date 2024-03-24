@@ -397,17 +397,19 @@ void produit(Automate A1,Automate A2) {
     system("start produit.png");
 }
 
-void Intersection(Automate A3, Automate A4) {
+void Intersection(Automate A3, Automate A4)
+{
     Automate intersection_automate;
 
-    for (int i = 0; i < A3.nbr_transitions; i++) {
-
-        for (int j = 0; j < A4.nbr_transitions; j++) {
+    for (int i = 0; i < A3.nbr_transitions; i++)
+    {
+        for (int j = 0; j < A4.nbr_transitions; j++)
+        {
 
             if (A3.transitions[i].depart != A3.transitions[i].arrive &&
                 A4.transitions[j].depart != A4.transitions[j].arrive &&
-                A3.transitions[i].etiquete == A4.transitions[j].etiquete) {
-
+                A3.transitions[i].etiquete == A4.transitions[j].etiquete)
+            {
                 intersection_automate.transitions[intersection_automate.nbr_transitions].depart = A3.transitions[i].depart;
                 intersection_automate.transitions[intersection_automate.nbr_transitions].arrive = A3.transitions[i].arrive;
                 intersection_automate.transitions[intersection_automate.nbr_transitions].etiquete = A3.transitions[i].etiquete;
