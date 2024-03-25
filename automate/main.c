@@ -41,7 +41,7 @@ void supprimer_epsilon_transitions(Automate automate);
 EnsembleEtats calculer_etats_atteignables(Automate automate, EnsembleEtats ensemble, char symbole);
 bool ensemble_existe_deja(EnsembleEtats ensemble, EnsembleEtats ensembles[], int nbr_ensembles);
 void convertir_automate(Automate automate);
-Automate minimiser(Automate automate);
+void minimiser(Automate automate);
 
 
 
@@ -400,6 +400,7 @@ void produit(Automate A1,Automate A2) {
 void Intersection(Automate A3, Automate A4)
 {
     Automate intersection_automate;
+    intersection_automate.nbr_transitions = 0;
 
     for (int i = 0; i < A3.nbr_transitions; i++)
     {
@@ -418,7 +419,8 @@ void Intersection(Automate A3, Automate A4)
         }
     }
 
-    intersection_automate.initial = intersection_automate.transitions
+    intersection_automate.initial = intersection_automate.transitions[0].depart;
+    intersection_automate.final = intersection_automate.transitions[intersection_automate.nbr_transitions].arrive;
 
     printf("hello\n");
     FILE *file_dot = fopen("intersection.dot", "w");
@@ -542,7 +544,7 @@ void supprimer_epsilon_transitions(Automate automate)
     system("dot -Tpng automate_transitions.dot -o automate_transitions.png");//system :fonction pour executer les commandes de cmd
     system("start automate_transitions.png");
 }
-Automate minimiser(Automate automate) {
+void minimiser(Automate automate) {
     // Étape 1: Initialiser la table de marquage
     bool table[automate.nbr_transitions][automate.nbr_transitions];
     for (int i = 0; i < automate.nbr_transitions; i++) {
@@ -645,7 +647,7 @@ Automate minimiser(Automate automate) {
     }
 
     fprintf(file_dot, "digraph minimal_automate {\n");
-    
+
     for (int i = 0; i < automate.nbr_transitions; i++)
     {
         fprintf(file_dot, "%d -> %d [label=%c];\n", automate.transitions[i].depart, automate.transitions[i].arrive, automate.transitions[i].etiquete);
@@ -683,11 +685,14 @@ EnsembleEtats calculer_etats_atteignables(Automate automate, EnsembleEtats ensem
     etats_atteignables.nbr_etats = 0;
 
     // Parcourir toutes les transitions de l'automate
-    for (int i = 0; i < automate.nbr_transitions; i++) {
+    for (int i = 0; i < automate.nbr_transitions; i++)
+    {
         Transition transition = automate.transitions[i];
         // Vérifier si la transition part d'un état de l'ensemble actuel avec le symbole donné
-        for (int j = 0; j < ensemble.nbr_etats; j++) {
-            if (transition.depart == ensemble.etats[j] && transition.etiquete == symbole) {
+        for (int j = 0; j < ensemble.nbr_etats; j++)
+        {
+            if (transition.depart == ensemble.etats[j] && transition.etiquete == symbole)
+            {
                 // Ajouter l'état d'arrivée à l'ensemble des états atteignables
                 etats_atteignables.etats[etats_atteignables.nbr_etats] = transition.arrive;
                 etats_atteignables.nbr_etats++;

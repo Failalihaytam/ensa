@@ -1,0 +1,6 @@
+digraph intersection {
+0 -> 1 [label="a"];
+1 -> 2 [label="b"];
+start -> 0 [label="start"];
+0 [shape=doublecircle];
+}
