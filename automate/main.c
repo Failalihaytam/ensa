@@ -420,7 +420,7 @@ void Intersection(Automate A3, Automate A4)
     }
 
     intersection_automate.initial = intersection_automate.transitions[0].depart;
-    intersection_automate.final = intersection_automate.transitions[intersection_automate.nbr_transitions].arrive;
+    intersection_automate.final = intersection_automate.transitions[intersection_automate.nbr_transitions - 1].arrive;
 
     printf("hello\n");
     FILE *file_dot = fopen("intersection.dot", "w");
@@ -437,7 +437,7 @@ void Intersection(Automate A3, Automate A4)
         fprintf(file_dot, "%d -> %d [label=\"%c\"];\n", intersection_automate.transitions[i].depart, intersection_automate.transitions[i].arrive, intersection_automate.transitions[i].etiquete);
     }
 
-    
+
     // Marquer l'état final
     fprintf(file_dot, "%d [shape=doublecircle];\n", intersection_automate.final);
 
