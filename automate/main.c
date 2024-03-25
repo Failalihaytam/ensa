@@ -438,9 +438,8 @@ void Intersection(Automate A3, Automate A4)
         fprintf(file_dot, "%d -> %d [label=\"%c\"];\n", intersection_automate.transitions[i].depart, intersection_automate.transitions[i].arrive, intersection_automate.transitions[i].etiquete);
     }
 
-
-    // Marquer l'état final
-    fprintf(file_dot, "%d [shape=doublecircle];\n", intersection_automate.final);
+    fprintf(file_dot,"%d [color=green];\n", intersection_automate.initial);
+    fprintf(file_dot,"%d [color=blue];\n", intersection_automate.final);
 
     fprintf(file_dot, "}\n");
     fclose(file_dot);
