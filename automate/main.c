@@ -639,33 +639,42 @@ Automate minimiser(Automate automate) {
     minimal_automate.final = set[automate.final];
 
     FILE *file_dot = fopen("minimal_automate.dot", "w");
-    if (file_dot == NULL) {
+    if (file_dot == NULL)
+    {
+        return;
+    }
 
-        }
-        fprintf(file_dot, "digraph minimal_automate {\n");
-        for (int i = 0; i < automate.nbr_transitions; i++) {
-            fprintf(file_dot, "%d -> %d [label=%c];\n", automate.transitions[i].depart, automate.transitions[i].arrive, automate.transitions[i].etiquete);
-        }
-        fprintf(file_dot, "%d [color=green];\n", automate.initial);
-        fprintf(file_dot, "%d [color=blue];\n", automate.final);
+    fprintf(file_dot, "digraph minimal_automate {\n");
+    
+    for (int i = 0; i < automate.nbr_transitions; i++)
+    {
+        fprintf(file_dot, "%d -> %d [label=%c];\n", automate.transitions[i].depart, automate.transitions[i].arrive, automate.transitions[i].etiquete);
+    }
+    fprintf(file_dot, "%d [color=green];\n", automate.initial);
+    fprintf(file_dot, "%d [color=blue];\n", automate.final);
 
-        for (int i = 0; i < automate.nbr_transitions; i++) {
-            bool found = false;
-            for (int j = 0; j < automate.nbr_transitions; j++) {
-                if (automate.transitions[i].depart == automate.transitions[j].arrive) {
-                    found = true;
-                    break;
-                }
+    for (int i = 0; i < automate.nbr_transitions; i++)
+    {
+        bool found = false;
+        for (int j = 0; j < automate.nbr_transitions; j++)
+        {
+            if (automate.transitions[i].depart == automate.transitions[j].arrive)
+            {
+                found = true;
+                break;
             }
-            if (!found && automate.transitions[i].depart != automate.initial) {
-                fprintf(file_dot, "%d [color=grey];\n", automate.transitions[i].depart);
-            }
         }
-        fprintf(file_dot, "}");
-        fclose(file_dot);
-        system("dot -Tpng minimal_automate.dot -o minimal_automate.png");
-        system("start minimal_automate.png");
 
+        if (!found && automate.transitions[i].depart != automate.initial)
+        {
+            fprintf(file_dot, "%d [color=grey];\n", automate.transitions[i].depart);
+        }
+    }
+
+    fprintf(file_dot, "}");
+    fclose(file_dot);
+    system("dot -Tpng minimal_automate.dot -o minimal_automate.png");
+    system("start minimal_automate.png");
 }
 
 EnsembleEtats calculer_etats_atteignables(Automate automate, EnsembleEtats ensemble, char symbole)
