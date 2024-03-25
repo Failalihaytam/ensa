@@ -638,8 +638,8 @@ Automate minimiser(Automate automate) {
     minimal_automate.initial = set[automate.initial];
     minimal_automate.final = set[automate.final];
 
-        FILE *file_dot = fopen("minimal_automate.dot", "w");
-        if (file_dot == NULL) {
+    FILE *file_dot = fopen("minimal_automate.dot", "w");
+    if (file_dot == NULL) {
 
         }
         fprintf(file_dot, "digraph minimal_automate {\n");
@@ -666,8 +666,6 @@ Automate minimiser(Automate automate) {
         system("dot -Tpng minimal_automate.dot -o minimal_automate.png");
         system("start minimal_automate.png");
 
-
-    return minimal_automate;
 }
 
 EnsembleEtats calculer_etats_atteignables(Automate automate, EnsembleEtats ensemble, char symbole)
