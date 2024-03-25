@@ -348,7 +348,8 @@ void Union_Automates(Automate A1,Automate A2)
     system("start union.png");
 }
 
-void etoile(Automate A){
+void etoile(Automate A)
+{
     FILE *file_dot = fopen("etoile.dot","w");
 
     if (file_dot == NULL)
