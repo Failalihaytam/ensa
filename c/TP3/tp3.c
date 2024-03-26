@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 
 //1
 typedef struct
@@ -71,7 +71,7 @@ compte *saisir ()
 void afficher(char *fichier, long num_compte)
 {
     compte c;
-    FILE *file = fopen(fichier, "r");
+    FILE *file = fopen(fichier, "rb");
     if (file == NULL)
     {
         return;
@@ -82,7 +82,7 @@ void afficher(char *fichier, long num_compte)
       fscanf(file, "%ld %lf %s %s", &c.numero, &c.solde, c.nom, c.prenom);
       if(c.numero == num_compte)
       {
-          printf("numero: %l\nsolde: %lf\nnom: %s\nprenom: %s\n");
+          printf("numero: %ld\nsolde: %lf\nnom: %s\nprenom: %s\n");
           return;
       }
     }
@@ -91,7 +91,7 @@ void afficher(char *fichier, long num_compte)
 //e
 void ajouter(char *fichier, compte c)
 {
-    FILE *file = fopen(fichier, "a");
+    FILE *file = fopen(fichier, "ab");
     if (file == NULL)
     {
         return;
@@ -104,7 +104,7 @@ void ajouter(char *fichier, compte c)
 int position(char *fichier, long num)
 {
     compte c;
-    FILE *file = fopen(fichier, "r");
+    FILE *file = fopen(fichier, "rb");
     if (file == NULL)
     {
         return;
