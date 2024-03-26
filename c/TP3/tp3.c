@@ -61,7 +61,7 @@ char sous_menu()
     printf("     ** Retrait **     R\n");
     printf(" ** pour quitter taper ** Q\n");
     printf("Entrer votre choix : ");
-    scanf("%s", &choix);
+    scanf("%c", &choix);
     return choix;
 }
 
