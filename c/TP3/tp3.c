@@ -20,9 +20,13 @@ void operation(char *fichier, long num_compte);
 
 int main()
 {
-    compte *c = saisir();
-    ajouter("comptes.bin", *c);
-    afficher("comptes.bin", c->numero);
+    //compte *c = saisir();
+    //ajouter("comptes.bin", *c);
+
+    int numero;
+    printf("entrer le numero du compte: ");
+    scanf("%d", &numero);
+    afficher("comptes.bin", numero);
     return 0;
 }
 
@@ -97,7 +101,7 @@ void ajouter(char *fichier, compte c)
         return;
     }
 
-    fprintf(file, "%ld %lf %s %s", c.numero, c.solde, c.nom, c.prenom);
+    fprintf(file, "%ld %lf %s %s\n", c.numero, c.solde, c.nom, c.prenom);
 }
 
 //f
