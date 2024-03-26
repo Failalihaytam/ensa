@@ -114,7 +114,7 @@ int position(char *fichier, long num)
     while(feof(file) == 0)
     {
       fscanf(file, "%ld %lf %s %s", &c.numero, &c.solde, c.nom, c.prenom);
-      if(c.numero == num_compte)
+      if(c.numero == num)
       {
           return i;
       }
@@ -124,6 +124,7 @@ int position(char *fichier, long num)
 }
 
 //g
+/*
 void operation(char *fichier, long num_compte)
 {
     double solde;
@@ -152,3 +153,4 @@ void verser(char *fichier, long num_compte, double solde)
 {
 
 }
+*/
