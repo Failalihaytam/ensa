@@ -27,6 +27,7 @@ int main()
     printf("entrer le numero du compte: ");
     scanf("%d", &numero);
     afficher("comptes.bin", numero);
+    printf("position: %d\n", position("comptes.bin", numero));
     return 0;
 }
 
