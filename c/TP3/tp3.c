@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 //1
 typedef struct
@@ -135,8 +136,7 @@ void operation(char *fichier, long num_compte)
 {
     double solde;
 
-    char choix = sous_menu();
-    choix = choix.toupper();
+    char choix = toupper(sous_menu());
     if(choix == 'A')
     {
         afficher(fichier, num_compte);
