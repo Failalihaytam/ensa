@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+
 //1
 typedef struct
 {
@@ -60,7 +61,7 @@ char sous_menu()
 //c
 compte *saisir ()
 {
-    compte *c;
+    compte *c = malloc(sizeof(compte));
     printf("Entrez les informations de votre compte(numero, solde, nom, prenom):  ");
     scanf("%ld %lf %s %s", &c->numero, &c->solde, c->nom, c->prenom);
     return c;
