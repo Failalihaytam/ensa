@@ -62,8 +62,7 @@ char sous_menu()
     printf(" ** pour quitter taper ** Q\n");
     printf("Entrer votre choix : ");
     scanf("%c", &choix);
-    while (getchar() != '\n');
-    return 'a';
+    return choix;
 }
 
 //c
