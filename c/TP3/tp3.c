@@ -135,7 +135,7 @@ void operation(char *fichier, long num_compte)
 {
     double solde;
 
-    char choix = sous_menu();
+    char choix = sous_menu().toupper();
     if(choix == 'A')
     {
         afficher(fichier, num_compte);
