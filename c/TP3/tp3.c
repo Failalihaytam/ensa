@@ -78,7 +78,7 @@ void afficher(char *fichier, long num_compte)
 
     while(feof(file) == 0)
     {
-      fscanf(file, "%l %lf %s %s", &c.numero, &c.solde, c.nom, c.prenom);
+      fscanf(file, "%ld %lf %s %s", &c.numero, &c.solde, c.nom, c.prenom);
       if(c.numero == num_compte)
       {
           printf("numero: %l\nsolde: %lf\nnom: %s\nprenom: %s\n");
@@ -96,7 +96,7 @@ void ajouter(char *fichier, compte c)
         return;
     }
 
-    fprintf(file, "%l %lf %s %s", c.numero, c.solde, c.nom, c.prenom);
+    fprintf(file, "%ld %lf %s %s", c.numero, c.solde, c.nom, c.prenom);
 }
 
 //f
@@ -112,7 +112,7 @@ int position(char *fichier, long num)
     int i = 1;
     while(feof(file) == 0)
     {
-      fscanf(file, "%l %lf %s %s", &c.numero, &c.solde, c.nom, c.prenom);
+      fscanf(file, "%ld %lf %s %s", &c.numero, &c.solde, c.nom, c.prenom);
       if(c.numero == num_compte)
       {
           return i;
