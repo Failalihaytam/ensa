@@ -17,6 +17,13 @@ void ajouter(char *fichier, compte c);
 int position(char *fichier, long num);
 void operation(char *fichier, long num_compte);
 
+int main()
+{
+    compte *c = saisir();
+    ajouter("comptes.bin", *c);
+    afficher("comptes.bin", c->numero);
+    return 0;
+}
 
 //2
 //a
@@ -25,15 +32,15 @@ char menu()
     char choix;
     printf("_______Ajouter un compte ______ A\n") ;
     printf("_______Supprimer un compte ______S\n") ;
-    printf("_______Opérations sur un compte ______ O\n") ;
+    printf("_______Opï¿½rations sur un compte ______ O\n") ;
     printf("     ** Affichage **      A\n") ;
     printf("     ** virement **     V\n") ;
     printf("     ** Retrait **     R\n") ;
-    printf("_______lister les débiteurs ______D\n") ;
+    printf("_______lister les dï¿½biteurs ______D\n") ;
     printf("_______Lister les comptes ______L\n") ;
     printf("_______Quitter ______Q\n") ;
     printf("Entrer votre choix : ") ;
-    scanf("%d", %choix);
+    scanf("%c", &choix);
     return choix;
 }
 
@@ -46,7 +53,7 @@ char sous_menu()
     printf("     ** Retrait **     R\n") ;
     printf(" ** pour quitter taper ** Q\n");
     printf("Entrer votre choix : ") ;
-    scanf("%d", &choix);
+    scanf("%c", &choix);
     return choix;
 }
 
