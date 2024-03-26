@@ -129,7 +129,7 @@ int position(char *fichier, long num)
 }
 
 //g
-/*
+
 void operation(char *fichier, long num_compte)
 {
     double solde;
@@ -158,4 +158,4 @@ void verser(char *fichier, long num_compte, double solde)
 {
 
 }
-*/
+
