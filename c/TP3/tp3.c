@@ -63,7 +63,7 @@ char sous_menu()
     printf("Entrer votre choix : ");
     scanf("%c", &choix);
     while (getchar() != '\n');
-    return choix;
+    return 'a';
 }
 
 //c
