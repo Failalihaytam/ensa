@@ -137,22 +137,25 @@ void operation(char *fichier, long num_compte)
     double solde;
 
     char choix = toupper(sous_menu());
-    if(choix == 'A')
+    do
     {
-        afficher(fichier, num_compte);
-    }
-    else if(choix == 'V')
-    {
-        printf("combien voudrez vous verser?: ");
-        scanf("%lf", &solde);
-        verser(fichier, num_compte, solde);
-    }
-    else if(choix == 'R')
-    {
-        printf("combien voudrez vous retirer?: ");
-        scanf("%lf", &solde);
-        retirer(fichier, num_compte, solde);
-    }
+        if(choix == 'A')
+        {
+            afficher(fichier, num_compte);
+        }
+        else if(choix == 'V')
+        {
+            printf("combien voudrez vous verser?: ");
+            scanf("%lf", &solde);
+            verser(fichier, num_compte, solde);
+        }
+        else if(choix == 'R')
+        {
+            printf("combien voudrez vous retirer?: ");
+            scanf("%lf", &solde);
+            retirer(fichier, num_compte, solde);
+        }
+    }while(choix != 'Q');
 }
 
 //h
