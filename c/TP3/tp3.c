@@ -18,6 +18,7 @@ void ajouter(char *fichier, compte c);
 int position(char *fichier, long num);
 void operation(char *fichier, long num_compte);
 void verser(char *fichier, long num_compte, double solde);
+void retirer(char *fichier, long num_compte, double solde);
 
 int main()
 {
@@ -182,3 +183,30 @@ void verser(char *fichier, long num_compte, double solde)
     rename("tmp.bin", fichier);
 }
 
+void retirer(char *fichier, long num_compte, double solde)
+{
+    compte c;
+    FILE *file = fopen(fichier, "rb");
+    FILE *tmp = fopen("tmp.bin", "wb");
+    if (file == NULL || tmp == NULL)
+    {
+        return;
+    }
+
+    while(feof(file) == 0)
+    {
+        fscanf(file, "%ld %lf %s %s", &c.numero, &c.solde, c.nom, c.prenom);
+        if (c.numero == num_compte)
+        {
+            fprintf(tmp, "%ld %lf %s %s\n", c.numero, c.solde + solde, c.nom, c.prenom);
+        }
+        else
+        {
+            fprintf(tmp, "%ld %lf %s %s\n", c.numero, c.solde, c.nom, c.prenom);
+        }
+    }
+    fclose(file);
+    fclose(tmp);
+    remove(fichier);
+    rename("tmp.bin", fichier);
+}
