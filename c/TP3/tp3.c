@@ -156,6 +156,17 @@ void operation(char *fichier, long num_compte)
 //h
 void verser(char *fichier, long num_compte, double solde)
 {
+    compte c;
+    FILE *file = fopen(fichier, "rb");
+    FILE *tmp = fopen("tmp.bin", "wb");
+    if (file == NULL || tmp == NULL)
+    {
+        return;
+    }
 
+    while(feof(file) == 0)
+    {
+        
+    }
 }
 
