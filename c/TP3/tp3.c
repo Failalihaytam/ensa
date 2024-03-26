@@ -17,6 +17,7 @@ void afficher(char *fichier, long num_compte);
 void ajouter(char *fichier, compte c);
 int position(char *fichier, long num);
 void operation(char *fichier, long num_compte);
+void verser(char *fichier, long num_compte, double solde);
 
 int main()
 {
