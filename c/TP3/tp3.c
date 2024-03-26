@@ -61,7 +61,8 @@ char sous_menu()
     printf("     ** Retrait **     R\n");
     printf(" ** pour quitter taper ** Q\n");
     printf("Entrer votre choix : ");
-    return 'R';
+    scanf("%c", &choix);
+    return choix;
 }
 
 //c
@@ -198,7 +199,7 @@ void retirer(char *fichier, long num_compte, double solde)
         fscanf(file, "%ld %lf %s %s", &c.numero, &c.solde, c.nom, c.prenom);
         if (c.numero == num_compte)
         {
-            fprintf(tmp, "%ld %lf %s %s\n", c.numero, c.solde + solde, c.nom, c.prenom);
+            fprintf(tmp, "%ld %lf %s %s\n", c.numero, c.solde - solde, c.nom, c.prenom);
         }
         else
         {
