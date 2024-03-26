@@ -26,8 +26,7 @@ int main()
     int numero;
     printf("entrer le numero du compte: ");
     scanf("%d", &numero);
-    afficher("comptes.bin", numero);
-    printf("position: %d\n", position("comptes.bin", numero));
+    operation("comptes.bin", numero);
     return 0;
 }
 
@@ -166,7 +165,19 @@ void verser(char *fichier, long num_compte, double solde)
 
     while(feof(file) == 0)
     {
-        
+        fscanf(file, "%ld %lf %s %s", &c.numero, &c.solde, c.nom, c.prenom);
+        if (c.numero == num_compte)
+        {
+            fprintf(tmp, "%ld %lf %s %s\n", c.numero, c.solde + solde, c.nom, c.prenom);
+        }
+        else
+        {
+            fprintf(tmp, "%ld %lf %s %s\n", c.numero, c.solde, c.nom, c.prenom);
+        }
     }
+    fclose(file);
+    fclose(tmp);
+    remove(fichier);
+    rename("tmp.bin", fichier);
 }
 
