@@ -38,16 +38,16 @@ int main()
 char menu()
 {
     char choix;
-    printf("_______Ajouter un compte ______ A\n") ;
-    printf("_______Supprimer un compte ______S\n") ;
-    printf("_______Op�rations sur un compte ______ O\n") ;
-    printf("     ** Affichage **      A\n") ;
-    printf("     ** virement **     V\n") ;
-    printf("     ** Retrait **     R\n") ;
-    printf("_______lister les d�biteurs ______D\n") ;
-    printf("_______Lister les comptes ______L\n") ;
-    printf("_______Quitter ______Q\n") ;
-    printf("Entrer votre choix : ") ;
+    printf("_______Ajouter un compte ______ A\n");
+    printf("_______Supprimer un compte ______S\n");
+    printf("_______Op�rations sur un compte ______ O\n");
+    printf("     ** Affichage **      A\n");
+    printf("     ** virement **     V\n");
+    printf("     ** Retrait **     R\n");
+    printf("_______lister les d�biteurs ______D\n");
+    printf("_______Lister les comptes ______L\n");
+    printf("_______Quitter ______Q\n");
+    printf("Entrer votre choix : ");
     scanf("%c", &choix);
     return choix;
 }
@@ -56,12 +56,13 @@ char menu()
 char sous_menu()
 {
     char choix;
-    printf("     ** Affichage **      A\n") ;
-    printf("     ** virement **     V\n") ;
-    printf("     ** Retrait **     R\n") ;
+    printf("     ** Affichage **      A\n");
+    printf("     ** virement **     V\n");
+    printf("     ** Retrait **     R\n");
     printf(" ** pour quitter taper ** Q\n");
-    printf("Entrer votre choix : ") ;
+    printf("Entrer votre choix : ");
     scanf("%c", &choix);
+    printf("hello");
     return choix;
 }
 
