@@ -62,7 +62,7 @@ compte *saisir ()
 {
     compte *c;
     printf("Entrez les informations de votre compte(numero, solde, nom, prenom):  ");
-    scanf("%l %lf %s %s", &c->numero, &c->solde, c->nom, c->prenom);
+    scanf("%ld %lf %s %s", &c->numero, &c->solde, c->nom, c->prenom);
     return c;
 }
 
