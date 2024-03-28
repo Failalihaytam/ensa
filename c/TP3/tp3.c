@@ -20,12 +20,15 @@ int position(char *fichier, long num);
 void operation(char *fichier, long num_compte);
 void verser(char *fichier, long num_compte, double solde);
 void retirer(char *fichier, long num_compte, double solde);
-
+void lister_debiteurs(char *fichier);
 void lister_comptes(char *fichier);
 
 int main()
 {
-    lister_comptes("comptes.bin");
+    compte *c = saisir();
+    
+    //lister_comptes("comptes.bin");
+    //lister_debiteurs("comptes.bin");
 }
 
 //2
@@ -221,6 +224,17 @@ void lister_debiteurs(char *fichier)
     {
         return;
     }
+
+    while (fscanf(file, "%ld %lf %s %s", &c.numero, &c.solde, c.nom, c.prenom) == 4)
+    {
+        if (c.solde < 0)
+        {
+            afficher(fichier, c.numero);
+            printf("\n");
+        }
+    }
+
+    fclose(file);
 }
 //k
 void lister_comptes(char *fichier)
