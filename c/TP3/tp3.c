@@ -225,13 +225,11 @@ void lister_comptes(char *fichier)
     }
 
     int i = 1;
-    // Utilisez fread pour lire les comptes un par un
-    while(fread(&c, sizeof(compte), 1, file) == 1)
+    while(feof(file) == 0)
     {
-        printf("%d.\nnumero: %ld\nsolde: %lf\nnom: %s\nprenom: %s\n\n", i, c.numero, c.solde, c.nom, c.prenom);
+        fscanf(file, "%ld %lf %s %s", &c.numero, &c.solde, c.nom, c.prenom);
+        printf("%d.\nnumero: %ld\nsolde: %lf\nnom: %s\nprenom: %s\n", i, c.numero, c.solde, c.nom, c.prenom);
         i++;
     }
-
-    fclose(file);
 
 }
