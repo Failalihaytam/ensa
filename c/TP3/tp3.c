@@ -233,7 +233,6 @@ void lister_comptes(char *fichier)
     }
 
     int i = 1;
-    //cette nouvelle boucle est utilisee pour eviter l'affichage de la derniere ligne deux fois
     while (fscanf(file, "%ld %lf %s %s", &c.numero, &c.solde, c.nom, c.prenom) == 4)
     {
         printf("%d.\nnumero: %ld\nsolde: %lf\nnom: %s\nprenom: %s\n\n", i, c.numero, c.solde, c.nom, c.prenom);
