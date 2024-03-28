@@ -23,9 +23,6 @@ void retirer(char *fichier, long num_compte, double solde);
 
 int main()
 {
-    //compte *c = saisir();
-    //ajouter("comptes.bin", *c);
-
     int numero;
     printf("entrer le numero du compte: ");
     scanf("%d", &numero);
