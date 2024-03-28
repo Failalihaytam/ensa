@@ -225,11 +225,11 @@ void lister_comptes(char *fichier)
     }
 
     int i = 1;
-    while(feof(file) == 0)
+    while (fscanf(file, "%ld %lf %s %s", &c.numero, &c.solde, c.nom, c.prenom) == 4)
     {
-        fscanf(file, "%ld %lf %s %s", &c.numero, &c.solde, c.nom, c.prenom);
         printf("%d.\nnumero: %ld\nsolde: %lf\nnom: %s\nprenom: %s\n\n", i, c.numero, c.solde, c.nom, c.prenom);
         i++;
     }
 
+    fclose(file);
 }
