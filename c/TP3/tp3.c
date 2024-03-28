@@ -218,3 +218,25 @@ void retirer(char *fichier, long num_compte, double solde)
 }
 
 //j
+
+//k
+void lister_comptes(char *fichier)
+{
+    compte c;
+    FILE *file = fopen(fichier, "rb");
+    if (file == NULL)
+    {
+        return;
+    }
+
+    while(feof(file) == 0)
+    {
+      fscanf(file, "%ld %lf %s %s", &c.numero, &c.solde, c.nom, c.prenom);
+      if(c.numero == num_compte)
+      {
+          printf("numero: %ld\nsolde: %lf\nnom: %s\nprenom: %s\n", c.numero, c.solde, c.nom, c.prenom);
+          return;
+      }
+    }
+
+}
