@@ -185,6 +185,7 @@ void verser(char *fichier, long num_compte, double solde)
     rename("tmp.bin", fichier);
 }
 
+//i
 void retirer(char *fichier, long num_compte, double solde)
 {
     compte c;
