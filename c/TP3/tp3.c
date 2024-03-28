@@ -21,6 +21,8 @@ void operation(char *fichier, long num_compte);
 void verser(char *fichier, long num_compte, double solde);
 void retirer(char *fichier, long num_compte, double solde);
 
+void lister_comptes(char *fichier);
+
 int main()
 {
     //compte *c = saisir();
