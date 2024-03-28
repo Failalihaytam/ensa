@@ -26,8 +26,8 @@ void lister_comptes(char *fichier);
 int main()
 {
     compte *c = saisir();
-    
-    //lister_comptes("comptes.bin");
+    ajouter("comptes.bin", *c);
+    lister_comptes("comptes.bin");
     //lister_debiteurs("comptes.bin");
 }
 
