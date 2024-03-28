@@ -25,10 +25,17 @@ void lister_comptes(char *fichier);
 
 int main()
 {
-    compte *c = saisir();
-    ajouter("comptes.bin", *c);
-    lister_comptes("comptes.bin");
+    //compte *c = saisir();
+    //ajouter("comptes.bin", *c);
+
+    //lister_comptes("comptes.bin");
     //lister_debiteurs("comptes.bin");
+
+    int numero;
+    printf("entrez le numero de votre compte: ");
+    scanf("%d", &numero);
+    operation("comptes.bin", numero);
+    return 0;
 }
 
 //2
