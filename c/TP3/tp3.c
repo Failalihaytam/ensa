@@ -262,4 +262,3 @@ void lister_comptes(char *fichier)
 
     fclose(file);
 }
-
