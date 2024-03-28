@@ -161,6 +161,7 @@ void operation(char *fichier, long num_compte)
             scanf("%lf", &solde);
             retirer(fichier, num_compte, solde);
         }
+        printf("\n");
     }while(choix != 'Q');
 }
 
